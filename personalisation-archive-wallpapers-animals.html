@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Personalisation — Desktop Wallpapers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="https://archive.org/download/themepack/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap"
+      rel="stylesheet">
+    <style>
+
+  :root{
+    --sky-deep:#154f8f;
+    --sky-mid:#4fa3e3;
+    --sky-hi:#bfe6ff;
+    --sky-pale:#eaf7ff;
+    --glass:rgba(255,255,255,0.5);
+    --glass-strong:rgba(255,255,255,0.78);
+    --teal:#5ed9c3;
+    --teal-deep:#2fae94;
+    --text-dark:#123253;
+    --text-mid:#3d6690;
+    --line:rgba(21,79,143,0.18);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito Sans', sans-serif;
+    color:var(--text-dark);
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(255,255,255,0.55), transparent 60%),
+      linear-gradient(180deg, var(--sky-pale) 0%, #f6fbff 40%, #ffffff 100%);
+    min-height:100vh;
+  }
+
+  a{color:var(--sky-deep); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--teal-deep); outline-offset:2px;}
+
+  h1,h2,h3,.brand,.navlink,.category{font-family:'Quicksand', sans-serif;}
+
+  /* ---------- decorative bokeh ---------- */
+  .bokeh{position:absolute; border-radius:50%; filter:blur(0px); pointer-events:none;}
+
+  /* ---------- header ---------- */
+  header.top{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.15) 55%, rgba(255,255,255,0) 100%),
+      linear-gradient(180deg, var(--sky-hi) 0%, var(--sky-mid) 55%, var(--sky-deep) 100%);
+    padding:18px 32px 14px;
+    box-shadow:0 2px 10px rgba(21,79,143,0.25);
+  }
+  header.top::before{
+    content:"";
+    position:absolute; left:-10%; top:-60%;
+    width:120%; height:140%;
+    background:radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.55), transparent 55%);
+    pointer-events:none;
+  }
+  .bokeh.b1{width:70px;height:70px; right:12%; top:10px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.85), rgba(255,255,255,0.05) 60%);}
+  .bokeh.b2{width:36px;height:36px; right:22%; top:52px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.7), rgba(255,255,255,0.05) 60%);}
+  .bokeh.b3{width:20px;height:20px; right:8%; top:60px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.65), rgba(255,255,255,0.05) 60%);}
+
+  .brandrow{
+    display:flex; align-items:center; justify-content:space-between;
+    position:relative; z-index:1;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-size:26px; font-weight:700; color:#ffffff;
+    text-shadow:0 1px 2px rgba(10,40,70,0.35);
+  }
+  .brand:hover{text-decoration:none;}
+  
+  .orb{width:34px; height:34px;}
+  
+  .brand .sub{
+    font-family:'Nunito Sans', sans-serif;
+    font-weight:400; font-size:12px; color:rgba(255,255,255,0.85);
+    display:block; margin-top:1px;
+  }
+
+  nav.mainnav{
+    display:flex; gap:26px; margin-top:16px;
+    position:relative; z-index:1;
+    flex-wrap:wrap;
+  }
+  nav.mainnav a{
+    color:#ffffff; font-weight:600; font-size:14.5px;
+    text-shadow:0 1px 2px rgba(10,40,70,0.35);
+    padding-bottom:6px; border-bottom:2px solid transparent;
+  }
+  nav.mainnav a:hover{ text-decoration:none; border-bottom:2px solid rgba(255,255,255,0.85);}
+
+  nav.subnav{
+    background:var(--glass-strong);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:10px 32px;
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-size:13.5px; font-weight:600;
+  }
+  nav.subnav a.current{color:var(--text-dark); text-decoration:none; cursor:default;}
+  nav.subnav a.current:hover{text-decoration:none;}
+
+  /* ---------- hero / feature strip ---------- */
+  .feature{
+    max-width:1180px; margin:0 auto;
+    padding:30px 32px 18px;
+    display:grid; grid-template-columns:1fr 300px; gap:28px;
+  }
+  .feature h1{
+    font-size:30px; margin:0 0 14px; color:var(--sky-deep); font-weight:700;
+  }
+  .feature-main{
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .feature-thumb{
+    width:120px; height:88px; border-radius:8px; flex:none;
+    background:linear-gradient(160deg,#dff2e8,#a9d9bf 55%, #6fbf8f);
+    box-shadow:0 3px 8px rgba(21,79,143,0.2);
+    position:relative; overflow:hidden;
+  }
+  .feature-thumb::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 70%, rgba(0,0,0,0.15), transparent 60%);
+  }
+  .feature-text h3{ margin:0 0 4px; font-size:15px; color:var(--text-dark);}
+  .feature-text p{ margin:0 0 8px; font-size:13.5px; color:var(--text-mid); max-width:46ch;}
+  .feature-text .links{font-size:13px;}
+  .feature-note{font-size:12.5px; color:var(--text-mid); margin-top:14px;}
+  .feature-note b{color:var(--text-dark);}
+
+  .extras{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:14px;
+    padding:16px 18px;
+    box-shadow:0 4px 14px rgba(21,79,143,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .extras p{margin:0 0 10px; font-size:13.5px; color:var(--text-mid);}
+  .icon-strip{display:flex; gap:10px; margin-bottom:12px;}
+  .glassicon{
+    width:44px; height:44px; border-radius:10px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.9), rgba(255,255,255,0.25));
+    border:1px solid rgba(255,255,255,0.7);
+    box-shadow:0 2px 6px rgba(21,79,143,0.18), inset 0 1px 2px rgba(255,255,255,0.9);
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px;
+  }
+
+  hr.divider{
+    max-width:1180px; margin:6px auto 0; border:none;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- body layout ---------- */
+  .layout{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:220px 1fr;
+    gap:28px; padding:24px 32px 60px;
+  }
+
+  .categories{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .categories a{
+    display:block; padding:9px 14px; border-radius:9px;
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,0.55);
+    color:var(--sky-deep); font-weight:600; font-size:13.5px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .categories a:hover{ text-decoration:none; background:var(--glass-strong);}
+  .categories a.active{
+    background:linear-gradient(160deg, var(--sky-hi), #9fd6ff);
+    color:var(--text-dark);
+    border:1px solid rgba(21,79,143,0.25);
+    box-shadow:0 2px 6px rgba(21,79,143,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:22px 18px;
+  }
+  figure.card{ margin:0; }
+  figure.card .photo{
+    aspect-ratio:4/3; border-radius:9px; overflow:hidden;
+    box-shadow:0 3px 10px rgba(21,79,143,0.18);
+    position:relative;
+  }
+  figure.card .photo img{ width:100%; height:100%; object-fit:cover; display:block;}
+  figure.card .photo::after{
+    content:""; position:absolute; inset:0; border-radius:9px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.5);
+  }
+  figcaption{ margin-top:8px; font-size:13px; line-height:1.35;}
+  figcaption .loc{ font-weight:700; color:var(--text-dark); display:block;}
+  figcaption .region{ color:var(--text-mid); display:block; font-size:12px; margin-bottom:2px;}
+  figcaption a{ font-weight:600; font-size:12.5px;}
+
+  footer{
+    text-align:center; font-size:12px; color:var(--text-mid);
+    padding:18px 20px 34px;
+  }
+
+  @media (max-width:820px){
+    .feature{grid-template-columns:1fr;}
+    .layout{grid-template-columns:1fr;}
+    .categories{ flex-direction:row; flex-wrap:wrap;}
+    .grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:480px){
+    .grid{grid-template-columns:1fr 1fr;}
+    header.top{padding:14px 18px;}
+    nav.subnav{padding:10px 18px;}
+    .feature, .layout{padding-left:18px; padding-right:18px;}
+  }
+</style> </head>
+  <body>
+   <header class="top">
+  <span class="bokeh b1"></span><span class="bokeh b2"></span><span class="bokeh b3"></span>
+  <div class="brandrow">
+    <a class="brand" href="index.html">
+      <img class="orb" src="https://archive.org/download/themepack/icon.png" alt="">
+  <span>Windows Personalisation Archive
+    <span class="sub">Aero Personalisation Archive Project</span>
+  </span>
+</a> </div>
+      <nav class="mainnav"> <a href="index.html">Home</a>
+        <a href="personalisation-archive-themes-animals.html">Themes</a> <a class="current"
+          href="personalisation-archive-wallpapers-animals.html">Wallpapers</a>
+        <a href="personalisation-archive-gadgets.html">Gadgets</a> </nav>
+    </header>
+    <nav class="subnav"> <a href="index.html">Gallery home</a> <a href="personalisation-archive-themes-animals.html">Aero
+        theme packs</a> <a class="current" href="personalisation-archive-wallpapers-animals.html">Wallpapers</a>
+      <a href="personalisation-archive-gadgets.html">Desktop Gadgets</a> <a href="personalisation-archive-index.html">Archive
+        index</a> <a href="legacy-themes-interface.html">Legacy Themes Browser
+        (deprecated)</a> </nav>
+    <section class="feature">
+      <div>
+        <h1>Wallpapers</h1>
+        <div class="feature-main">
+          <div class="feature-thumb" aria-hidden="false"></div>
+          <div class="feature-text">
+            <h3>Running a newer version of Windows?</h3>
+            <p>If you're running Windows 7 or later, you can use theme packs,
+              which customise your whole computing experience, including
+              wallpapers, sounds, colours, cursors and more. If you're using an
+              older version of Windows, or just want to personalise the
+              Wallpaper, you can explore the collection below. </p>
+            <div class="links"> <a href="https://support.microsoft.com/en-us/windows/experience/personalization/change-the-desktop-background-in-windows#change-your-background">How
+                wallpapers work</a> &nbsp;|&nbsp; <a href="personalisation-archive-themes-animals.html">Explore
+                theme packs</a> </div>
+          </div>
+        </div>
+        <p class="feature-note">To use a backdrop: choose <b>Download this
+            wallpaper</b>, right-click the image, then choose <b>Set as desktop
+            wallpaper</b>. </p>
+      </div>
+      <div class="extras">
+        <p><strong>Fancy dressing up the rest of your desktop?</strong></p>
+        <div class="icon-strip">
+          <div class="glassicon">🎵</div>
+          <div class="glassicon">⏱️</div>
+          <div class="glassicon">🦋</div>
+        </div>
+        <p style="margin-bottom:0;">Browse <a href="#">gadgets</a> to add
+          sound, motion and a little glass shine to your screen.</p>
+      </div>
+    </section>
+    <hr class="divider">
+    <div class="layout">
+      <ul class="categories">
+        <li><a class="active" href="personalisation-archive-wallpapers-animals.html">Animals,
+            fish, and bugs</a></li>
+        <li><a href="personalisation-archive-wallpapers-art.html">Art (Illustrative)</a></li>
+		<li><a href="personalisation-archive-wallpapers-photo.html">Art (Photographic)</a></li>
+        <li><a href="personalisation-archive-wallpapers-games.html">Games</a></li>
+        <li><a href="personalisation-archive-wallpapers-holidays.html">Holidays
+            and seasons</a></li>
+        <li><a href="personalisation-archive-wallpapers-nature.html">Natural Wonders</a></li>
+        <li><a href="personalisation-archive-wallpapers-places.html">Places and
+            landscapes</a></li>
+		<li><a href="personalisation-archive-wallpapers-plants.html">Plants and flowers</a></li>
+        <li><a href="personalisation-archive-wallpapers-community.html">From the
+            community</a></li>
+      </ul>
+      <div class="grid">
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/353e4a6e-bbfd-4714-b10c-2f8f8a9cdd14_15.jpg?raw=true"
+              alt="Baby Rabbits"></div>
+          <figcaption> <span class="loc">Baby Rabbits</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/353e4a6e-bbfd-4714-b10c-2f8f8a9cdd14_15.jpg"
+              title="Baby Rabbits - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/27218b6e-c605-499a-a54c-e15ded4ebe55_8.jpg?raw=true"
+              alt="Bald Eagle (Haliaeetus leucocephalus) in flight with a fish"></div>
+          <figcaption> <span class="loc">Bald Eagle</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/27218b6e-c605-499a-a54c-e15ded4ebe55_8.jpg"
+              title="Bald Eagle - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/b197b879-626b-44e8-b95e-2d29ac7c9c5e_5.jpg?raw=true"
+              alt="Bee and waterlily"></div>
+          <figcaption> <span class="loc">Bee and Waterlily</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/b197b879-626b-44e8-b95e-2d29ac7c9c5e_5.jpg"
+              title="Bee and Waterlily - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/39a4113c-de55-4032-a789-dab2a38b76bb_6.jpg?raw=true"
+              alt="Close-up of bee on yellow flower"></div>
+          <figcaption> <span class="loc">Bee on Yellow Flower</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/39a4113c-de55-4032-a789-dab2a38b76bb_6.jpg"
+              title="Bee On Yellow Flower - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/baec318f-edeb-4823-aa94-2e86006f38af_20.jpg?raw=true"
+              alt="Bengal Tiger"></div>
+          <figcaption> <span class="loc">Bengal Tiger</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/baec318f-edeb-4823-aa94-2e86006f38af_20.jpg"
+              title="Bengal Tiger - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/c5de7db9-deea-4e84-b83d-a20c7c95331a_57.jpg?raw=true"
+              alt="Bison in Yellowstone National Park, United States"></div>
+          <figcaption> <span class="loc">Bison</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/c5de7db9-deea-4e84-b83d-a20c7c95331a_57.jpg"
+              title="Bison - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/82f10523-7395-44ff-ba0c-93adfbc9ceeb_21.jpg?raw=true"
+              alt="Ruby - Black Cat"></div>
+          <figcaption> <span class="loc">Black Cat</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/82f10523-7395-44ff-ba0c-93adfbc9ceeb_21.jpg"
+              title="Black Cat - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/7e2ac90e-8862-4a28-8e20-df370f0675aa_6.jpg?raw=true"
+              alt="Brown rabbit, outdoors"></div>
+          <figcaption> <span class="loc">Brown Bunny</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/7e2ac90e-8862-4a28-8e20-df370f0675aa_6.jpg"
+              title="Brown Bunny - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/e24b069a-bcbf-4f84-8960-b93db2120782_24.jpg?raw=true"
+              alt="Butterfly in Yellow Flowers"></div>
+          <figcaption> <span class="loc">Butterfly in Yellow Flowers</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/e24b069a-bcbf-4f84-8960-b93db2120782_24.jpg"
+              title="Butterfly in Yellow Flowers - Download">Download this
+              wallpaper</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/27439835-b3a9-472b-bed1-fa646d8d475c_13.jpg?raw=true"
+              alt="Butterfly in Pink Flowers"></div>
+          <figcaption> <span class="loc">Butterfly in Pink Flowers</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="27439835-b3a9-472b-bed1-fa646d8d475c_13.jpg"
+              title="Butterfly in Pink Flowers - Download">Download this
+              wallpaper</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/17798469-743a-458b-8475-bea23f585b59_19.jpg?raw=true"
+              alt="Calico Cat"></div>
+          <figcaption> <span class="loc">Calico Cat</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/17798469-743a-458b-8475-bea23f585b59_19.jpg"
+              title="Calico Cat - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/977883f6-0c26-43ed-9655-a309aed1d4b3_19.jpg?raw=true"
+              alt="Cat in a Basket"></div>
+          <figcaption> <span class="loc">Cat in a Basket</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/977883f6-0c26-43ed-9655-a309aed1d4b3_19.jpg"
+              title="Cat in a Basket - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/6275e586-553f-42dd-9b37-73f2c5f65406_21.jpg?raw=true"
+              alt="Cat in a Sunbeam"></div>
+          <figcaption> <span class="loc">Cat in a Sunbeam</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/6275e586-553f-42dd-9b37-73f2c5f65406_21.jpg"
+              title="Cat in a Sunbeam - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/869eb807-c143-43c2-8e14-12f78fbd34a5_5_thumb.jpg?raw=true"
+              alt="Cattle Under Stormy Sky"></div>
+          <figcaption> <span class="loc">Cattle Under Stormy Sky</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/869eb807-c143-43c2-8e14-12f78fbd34a5_5.jpg"
+              title="Cattle Under Stormy Sky - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/14c5bcea-e6cb-44cd-8213-c2cf4cb875de_5.jpg?raw=true"
+              alt="A photo of a cheetah licking another cheetah"></div>
+          <figcaption> <span class="loc">Cheetahs</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/14c5bcea-e6cb-44cd-8213-c2cf4cb875de_5.jpg"
+              title="Cheetahs - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/ea794d77-2eab-401a-b7d5-5cce14bba030_19.jpg?raw=true"
+              alt="Clownfish"></div>
+          <figcaption> <span class="loc">Clown Fish</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/ea794d77-2eab-401a-b7d5-5cce14bba030_19.jpg"
+              title="Clown Fish - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/98178bbd-cda2-47d6-b1e2-8a02604964a0_6.jpg?raw=true"
+              alt="Coral Reef"></div>
+          <figcaption> <span class="loc">Coral Reef (West Papua, Indonesia)</span>
+            <span class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/98178bbd-cda2-47d6-b1e2-8a02604964a0_6.jpg"
+              title="Coral Reef - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/0c661c98-7db7-4358-8f22-208ad63cc537_6.jpg?raw=true"
+              alt="Coyote and Pup"></div>
+          <figcaption> <span class="loc">Coyote and Pup</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/0c661c98-7db7-4358-8f22-208ad63cc537_6.jpg"
+              title="Coyote and Pup - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/30d3f7c2-c06a-46e3-a929-2520ebf5ec0f_5.jpg?raw=true"
+              alt="Delicate Pearls"></div>
+          <figcaption> <span class="loc">Delicate Pearls</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/30d3f7c2-c06a-46e3-a929-2520ebf5ec0f_5.jpg"
+              title="Delicate Pearls - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/7ea5eb31-1472-4bb8-a32c-af067d80194c_20.jpg?raw=true"
+              alt="Dog in Green Grass"></div>
+          <figcaption> <span class="loc">Dog in Green Grass</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/7ea5eb31-1472-4bb8-a32c-af067d80194c_20.jpg"
+              title="Dog in Green Grass - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/651b890f-8199-4813-87ed-7bbb0a6f4502_20.jpg?raw=true"
+              alt="Dog with Daffodils"></div>
+          <figcaption> <span class="loc">Dog with Daffodils</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/651b890f-8199-4813-87ed-7bbb0a6f4502_20.jpg"
+              title="Dog with Daffodils - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/66a4f813-bce1-4f9e-891c-5b727e30616f_19.jpg?raw=true"
+              alt="Dog with a Stick"></div>
+          <figcaption> <span class="loc">Dog with a Stick</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/66a4f813-bce1-4f9e-891c-5b727e30616f_19.jpg"
+              title="Dog with a Stick - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/0ebc286d-249f-4cac-9db1-e3d1dc121190_5.jpg?raw=true"
+              alt="Dragonfly"></div>
+          <figcaption> <span class="loc">Dragonfly</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/0ebc286d-249f-4cac-9db1-e3d1dc121190_5.jpg"
+              title="Dragonfly - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/38cdef65-e3a3-48d5-bbdb-e5632c3c7837_6.jpg?raw=true"
+              alt="Ducklings with Colourful Eggs"></div>
+          <figcaption> <span class="loc">Ducklings with Colourful Eggs</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/38cdef65-e3a3-48d5-bbdb-e5632c3c7837_6.jpg"
+              title="Ducklings with Colourful Eggs - Download">Download this
+              wallpaper</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/3df6a45a-b519-475b-a230-92511cbe9f6d_6.jpg?raw=true"
+              alt="Flamingo"></div>
+          <figcaption> <span class="loc">Flamingo</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/3df6a45a-b519-475b-a230-92511cbe9f6d_6.jpg"
+              title="Flamingo - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/8c2723bf-a634-4130-80fb-3af5e26df5e3_5.jpg?raw=true"
+              alt="Fuzzy Bee"></div>
+          <figcaption> <span class="loc">Fuzzy Bee</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/8c2723bf-a634-4130-80fb-3af5e26df5e3_5.jpg"
+              title="Fuzzy Bee - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/40cb01ae-b8e3-478d-9bc3-f6e3e4097196_5.jpg?raw=true"
+              alt="Giraffe and Calf"></div>
+          <figcaption> <span class="loc">Giraffe and Calf</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/40cb01ae-b8e3-478d-9bc3-f6e3e4097196_5.jpg"
+              title="Giraffe and Calf - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/595fa053-6e15-42ad-992e-9d2f39f69593_21.jpg?raw=true"
+              alt="Grasshopper"></div>
+          <figcaption> <span class="loc">Grasshopper</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/595fa053-6e15-42ad-992e-9d2f39f69593_21.jpg"
+              title="Grasshopper - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/6d5aad58-d592-49c9-b0a4-9c8304083f46_8.jpg?raw=true"
+              alt="Grass Snake"></div>
+          <figcaption> <span class="loc">Grass Snake</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/6d5aad58-d592-49c9-b0a4-9c8304083f46_8.jpg"
+              title="Grass Snake - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/91f9ff29-c013-48a1-9456-8591a7cc149a_14.jpg?raw=true"
+              alt="Grey Rabbit against a Pink Wall"></div>
+          <figcaption> <span class="loc">Grey Rabbit</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/91f9ff29-c013-48a1-9456-8591a7cc149a_14.jpg"
+              title="Grey Rabbit - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/caa554ac-6458-42ad-89c9-0a87f8e47f1b_5.jpg?raw=true"
+              alt="Great Blue Heron"></div>
+          <figcaption> <span class="loc">Great Blue Heron</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/caa554ac-6458-42ad-89c9-0a87f8e47f1b_5.jpg"
+              title="Great Blue Heron - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/7f7dff8e-90cd-46c9-8a26-9af6c74c8e78_5.jpg?raw=true"
+              alt="Green Beetle"></div>
+          <figcaption> <span class="loc">Green Beetle</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/7f7dff8e-90cd-46c9-8a26-9af6c74c8e78_5.jpg"
+              title="Green Beetle - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/df4bb2c5-08be-474f-8899-e2cfa641ce96_6.jpg?raw=true"
+              alt="Green Butterfly"></div>
+          <figcaption> <span class="loc">Green Butterfly</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/df4bb2c5-08be-474f-8899-e2cfa641ce96_6.jpg"
+              title="Green Butterfly - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/cac0f9af-988e-42be-904c-9d53e0dd92df_8.jpg?raw=true"
+              alt="Hairy Bush Viper"></div>
+          <figcaption> <span class="loc">Hairy Bush Viper</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/cac0f9af-988e-42be-904c-9d53e0dd92df_8.jpg"
+              title="Hairy Bush Viper - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/e7662352-b6fe-4632-a17c-9e6d85790d85_5.jpg?raw=true"
+              alt="Hidden Snail"></div>
+          <figcaption> <span class="loc">Hidden Snail</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/e7662352-b6fe-4632-a17c-9e6d85790d85_5.jpg"
+              title="Hidden Snail - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/c6dd3dcf-b631-4bfe-91d4-71ba1c20bb82_5.jpg?raw=true"
+              alt="Horse at Sunshine"></div>
+          <figcaption> <span class="loc">Horse at Sunshine</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/c6dd3dcf-b631-4bfe-91d4-71ba1c20bb82_5.jpg"
+              title="Horse at Sunshine - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/e637ecc4-be78-4bcf-a2ae-fd8faf38c747_6.jpg?raw=true"
+              alt="Infant Orangutan and Mother"></div>
+          <figcaption> <span class="loc">Infant Orangutan and Mother</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/e637ecc4-be78-4bcf-a2ae-fd8faf38c747_6.jpg"
+              title="Infant Orangutan and Mother - Download">Download this
+              wallpaper</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/5d5eceb3-995b-4403-8df5-f9d01ceed7c0_5.jpg?raw=true"
+              alt="Japanese Fox"></div>
+          <figcaption> <span class="loc">Japanese Fox</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/5d5eceb3-995b-4403-8df5-f9d01ceed7c0_5.jpg"
+              title="Japanese Fox - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/e38baa56-0f82-4899-9912-90cae1828250_5.jpg?raw=true"
+              alt="Ladybug"></div>
+          <figcaption> <span class="loc">Ladybug</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/e38baa56-0f82-4899-9912-90cae1828250_5.jpg"
+              title="Ladybug - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/8d368b2b-8b3b-4f07-b281-70418d52adbb_5.jpg?raw=true"
+              alt="Ladybug on Flower Petal"></div>
+          <figcaption> <span class="loc">Ladybug on Flower Petal</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/8d368b2b-8b3b-4f07-b281-70418d52adbb_5.jpg"
+              title="Ladybug on Flower Petal - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/0499760a-9d5b-4fb4-b467-fd85755f4ad7_5.jpg?raw=true"
+              alt="Ladybug on Thistle"></div>
+          <figcaption> <span class="loc">Ladybug on Thistle</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/0499760a-9d5b-4fb4-b467-fd85755f4ad7_5.jpg"
+              title="Ladybug on Thistle - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/0e8c5cfc-9b44-4c4c-8cb2-c3cab50c908c_6.jpg?raw=true"
+              alt="Lorikeet"></div>
+          <figcaption> <span class="loc">Lorikeet</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/0e8c5cfc-9b44-4c4c-8cb2-c3cab50c908c_6.jpg"
+              title="Lorikeet - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/e6e80b35-7d83-4943-8eac-9c4bdbfe9a4b_5.jpg?raw=true"
+              alt="Mustang on the Move"></div>
+          <figcaption> <span class="loc">Mustang on the Move</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/e6e80b35-7d83-4943-8eac-9c4bdbfe9a4b_5.jpg"
+              title="Ladybug - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/b8852895-1455-4598-afbd-592d940e021a_5.jpg?raw=true"
+              alt="Mute Swan Heart"></div>
+          <figcaption> <span class="loc">Mute Swan Heart</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/b8852895-1455-4598-afbd-592d940e021a_5.jpg"
+              title="Mute Swan Heart - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/4defba82-dad6-4754-af9c-6bff87e3cdb7_5.jpg?raw=true"
+              alt="Onaqui Mustangs"></div>
+          <figcaption> <span class="loc">Onaqui Mustangs (Utah, U.S.)</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/4defba82-dad6-4754-af9c-6bff87e3cdb7_5.jpg?raw=true"
+              title="Onaqui Mustangs - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/fcfb9f31-fe63-4d0f-991b-f3b139c2191e_5.jpg?raw=true"
+              alt="Peacock Close-up"></div>
+          <figcaption> <span class="loc">Peacock Close-up</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/fcfb9f31-fe63-4d0f-991b-f3b139c2191e_5.jpg"
+              title="Peacock Close-up - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/9642e39d-1bf4-45f6-a02c-117099e4be2e_5.jpg?raw=true"
+              alt="Pollinating Bee"></div>
+          <figcaption> <span class="loc">Pollinating Bee</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/9642e39d-1bf4-45f6-a02c-117099e4be2e_5.jpg"
+              title="Pollinating Bee - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/ccb09644-bdbe-4a75-9c72-b1c097e94ac0_5.jpg?raw=true"
+              alt="Provence Chalk-hill Blue Butterfly"></div>
+          <figcaption> <span class="loc">Provence Chalk-hill Blue Butterfly</span>
+            <span class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/ccb09644-bdbe-4a75-9c72-b1c097e94ac0_5.jpg"
+              title="Provence Chalk-hill Blue Butterfly - Download">Download
+              this wallpaper</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/f919ee10-f590-4809-8b4e-20306a88497d_19.jpg?raw=true"
+              alt="Puppy with a Leaf"></div>
+          <figcaption> <span class="loc">Puppy with a Leaf</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/ccb09644-bdbe-4a75-9c72-b1c097e94ac0_5.jpg"
+              title="Puppy with a Leaf - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/97d977c8-bfc6-421a-8b78-4965c119005d_5.jpg?raw=true"
+              alt="Red Lacewing Butterfly"></div>
+          <figcaption> <span class="loc">Red Lacewing Butterfly</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/97d977c8-bfc6-421a-8b78-4965c119005d_5.jpg"
+              title="Red Lacewing Butterfly - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/19b8c6b5-1f6e-4cf1-9f99-9d4e8a549715_8.jpg?raw=true"
+              alt="Red-Phase Bush Viper"></div>
+          <figcaption> <span class="loc">Red-Phase Bush Viper</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/19b8c6b5-1f6e-4cf1-9f99-9d4e8a549715_8.jpg"
+              title="Red-Phase Bush Viper - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/99b51b6b-1bfb-4e3d-bf01-481e059c252e_6.jpg?raw=true"
+              alt="Sleeping Duckling"></div>
+          <figcaption> <span class="loc">Sleeping Duckling</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/99b51b6b-1bfb-4e3d-bf01-481e059c252e_6.jpg"
+              title="Sleeping Duckling - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/b91ba456-1b35-4928-9278-53d0a8084439_5.jpg?raw=true"
+              alt="Snail Ride"></div>
+          <figcaption> <span class="loc">Snail Ride</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/b91ba456-1b35-4928-9278-53d0a8084439_5.jpg"
+              title="Snail Ride - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/85fc868d-2987-4ff9-afa5-3fed3b2fa7a1_6.jpg?raw=true"
+              alt="Swan"></div>
+          <figcaption> <span class="loc">Swan</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/85fc868d-2987-4ff9-afa5-3fed3b2fa7a1_6.jpg"
+              title="Swan - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/2bdc21b8-0aa2-46a0-9471-dac64cbafcba_20.jpg?raw=true"
+              alt="Tiger Cub"></div>
+          <figcaption> <span class="loc">Tiger Cub</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/2bdc21b8-0aa2-46a0-9471-dac64cbafcba_20.jpg"
+              title="Tiger Cub - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/40022383-c690-42cc-8933-77605410bb21_5.jpg?raw=true"
+              alt="Tree Frog"></div>
+          <figcaption> <span class="loc">Tree Frog</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/40022383-c690-42cc-8933-77605410bb21_5.jpg"
+              title="Tree Frog  - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/7e7921c1-3ab6-4824-9ff8-d0e5f8a7fe7d_5.jpg?raw=true"
+              alt="Victoria Crowned Pigeon"></div>
+          <figcaption> <span class="loc">Victoria Crowned Pigeon</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/7e7921c1-3ab6-4824-9ff8-d0e5f8a7fe7d_5.jpg"
+              title="Victoria Crowned Pigeon - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/c8ef84a5-69bf-45b3-8c24-7d08d6181a82_5.jpg?raw=true"
+              alt="White-Headed Capuchin Monkey"></div>
+          <figcaption> <span class="loc">White-Headed Capuchin Monkey</span> <span
+              class="region">Animals, fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/c8ef84a5-69bf-45b3-8c24-7d08d6181a82_5.jpg"
+              title="White-Headed Capuchin Monkey - Download">Download this
+              wallpaper</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/c141a8ba-97df-4c80-bb00-add4aa179c50_5.jpg?raw=true"
+              alt="Wild Horses"></div>
+          <figcaption> <span class="loc">Wild Horses</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/c141a8ba-97df-4c80-bb00-add4aa179c50_5.jpg"
+              title="Wild Horses - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/cee3a463-14c7-4ef1-a0fa-57fce77fe579_14.jpg?raw=true"
+              alt="Wolf Prowling"></div>
+          <figcaption> <span class="loc">Wolf Prowling</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/cee3a463-14c7-4ef1-a0fa-57fce77fe579_14.jpg"
+              title="Wolf Prowling - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/Animals.%20fish,%20and%20bugs%20THUMBS/1d13e4c9-2854-43d2-9fa2-ae6e5d2370af_14.jpg?raw=true"
+              alt="Wolf resting"></div>
+          <figcaption> <span class="loc">Wolf Resting</span> <span class="region">Animals,
+              fish, and bugs</span> <a href="https://archive.org/download/windows-wallpaper-archive/Animals.%20fish%2C%20and%20bugs/1d13e4c9-2854-43d2-9fa2-ae6e5d2370af_14.jpg"
+              title="Wolf Resting - Download">Download this wallpaper</a> </figcaption>
+        </figure>
+      </div>
+    </div>
+    <footer>The Windows Personalisation Archive is an independent, fan-made
+      archive of official Microsoft content - not affiliated with or endorsed by
+      any operating system vendor, including Microsoft Corporation.</footer>
+  </body>
+</html>
