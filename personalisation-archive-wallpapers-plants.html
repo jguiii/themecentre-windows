@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Personalisation — Desktop Wallpapers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="https://archive.org/download/themepack/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap"
+
+      rel="stylesheet">
+    <style>
+
+  :root{
+    --sky-deep:#154f8f;
+    --sky-mid:#4fa3e3;
+    --sky-hi:#bfe6ff;
+    --sky-pale:#eaf7ff;
+    --glass:rgba(255,255,255,0.5);
+    --glass-strong:rgba(255,255,255,0.78);
+    --teal:#5ed9c3;
+    --teal-deep:#2fae94;
+    --text-dark:#123253;
+    --text-mid:#3d6690;
+    --line:rgba(21,79,143,0.18);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito Sans', sans-serif;
+    color:var(--text-dark);
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(255,255,255,0.55), transparent 60%),
+      linear-gradient(180deg, var(--sky-pale) 0%, #f6fbff 40%, #ffffff 100%);
+    min-height:100vh;
+  }
+
+  a{color:var(--sky-deep); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--teal-deep); outline-offset:2px;}
+
+  h1,h2,h3,.brand,.navlink,.category{font-family:'Quicksand', sans-serif;}
+
+  /* ---------- decorative bokeh ---------- */
+  .bokeh{position:absolute; border-radius:50%; filter:blur(0px); pointer-events:none;}
+
+  /* ---------- header ---------- */
+  header.top{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.15) 55%, rgba(255,255,255,0) 100%),
+      linear-gradient(180deg, var(--sky-hi) 0%, var(--sky-mid) 55%, var(--sky-deep) 100%);
+    padding:18px 32px 14px;
+    box-shadow:0 2px 10px rgba(21,79,143,0.25);
+  }
+  header.top::before{
+    content:"";
+    position:absolute; left:-10%; top:-60%;
+    width:120%; height:140%;
+    background:radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.55), transparent 55%);
+    pointer-events:none;
+  }
+  .bokeh.b1{width:70px;height:70px; right:12%; top:10px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.85), rgba(255,255,255,0.05) 60%);}
+  .bokeh.b2{width:36px;height:36px; right:22%; top:52px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.7), rgba(255,255,255,0.05) 60%);}
+  .bokeh.b3{width:20px;height:20px; right:8%; top:60px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.65), rgba(255,255,255,0.05) 60%);}
+
+  .brandrow{
+    display:flex; align-items:center; justify-content:space-between;
+    position:relative; z-index:1;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-size:26px; font-weight:700; color:#ffffff;
+    text-shadow:0 1px 2px rgba(10,40,70,0.35);
+  }
+  .brand:hover{text-decoration:none;}
+  
+  .orb{width:34px; height:34px;}
+  
+  nav.mainnav a.current{ border-bottom:2px solid rgba(255,255,255,0.85);}
+  
+  .brand .sub{
+    font-family:'Nunito Sans', sans-serif;
+    font-weight:400; font-size:12px; color:rgba(255,255,255,0.85);
+    display:block; margin-top:1px;
+  }
+
+  nav.mainnav{
+    display:flex; gap:26px; margin-top:16px;
+    position:relative; z-index:1;
+    flex-wrap:wrap;
+  }
+  nav.mainnav a{
+    color:#ffffff; font-weight:600; font-size:14.5px;
+    text-shadow:0 1px 2px rgba(10,40,70,0.35);
+    padding-bottom:6px; border-bottom:2px solid transparent;
+  }
+  nav.mainnav a:hover{ text-decoration:none; border-bottom:2px solid rgba(255,255,255,0.85);}
+
+  nav.subnav{
+    background:var(--glass-strong);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:10px 32px;
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-size:13.5px; font-weight:600;
+  }
+  nav.subnav a.current{color:var(--text-dark); text-decoration:none; cursor:default;}
+  nav.subnav a.current:hover{text-decoration:none;}
+
+  /* ---------- hero / feature strip ---------- */
+  .feature{
+    max-width:1180px; margin:0 auto;
+    padding:30px 32px 18px;
+    display:grid; grid-template-columns:1fr 300px; gap:28px;
+  }
+  .feature h1{
+    font-size:30px; margin:0 0 14px; color:var(--sky-deep); font-weight:700;
+  }
+  .feature-main{
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .feature-thumb{
+    width:120px; height:88px; border-radius:8px; flex:none;
+    background:linear-gradient(160deg,#dff2e8,#a9d9bf 55%, #6fbf8f);
+    box-shadow:0 3px 8px rgba(21,79,143,0.2);
+    position:relative; overflow:hidden;
+  }
+  .feature-thumb::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 70%, rgba(0,0,0,0.15), transparent 60%);
+  }
+  .feature-text h3{ margin:0 0 4px; font-size:15px; color:var(--text-dark);}
+  .feature-text p{ margin:0 0 8px; font-size:13.5px; color:var(--text-mid); max-width:46ch;}
+  .feature-text .links{font-size:13px;}
+  .feature-note{font-size:12.5px; color:var(--text-mid); margin-top:14px;}
+  .feature-note b{color:var(--text-dark);}
+
+  .extras{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:14px;
+    padding:16px 18px;
+    box-shadow:0 4px 14px rgba(21,79,143,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .extras p{margin:0 0 10px; font-size:13.5px; color:var(--text-mid);}
+  .icon-strip{display:flex; gap:10px; margin-bottom:12px;}
+  .glassicon{
+    width:44px; height:44px; border-radius:10px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.9), rgba(255,255,255,0.25));
+    border:1px solid rgba(255,255,255,0.7);
+    box-shadow:0 2px 6px rgba(21,79,143,0.18), inset 0 1px 2px rgba(255,255,255,0.9);
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px;
+  }
+
+  hr.divider{
+    max-width:1180px; margin:6px auto 0; border:none;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- body layout ---------- */
+  .layout{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:220px 1fr;
+    gap:28px; padding:24px 32px 60px;
+  }
+
+  .categories{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .categories a{
+    display:block; padding:9px 14px; border-radius:9px;
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,0.55);
+    color:var(--sky-deep); font-weight:600; font-size:13.5px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .categories a:hover{ text-decoration:none; background:var(--glass-strong);}
+  .categories a.active{
+    background:linear-gradient(160deg, var(--sky-hi), #9fd6ff);
+    color:var(--text-dark);
+    border:1px solid rgba(21,79,143,0.25);
+    box-shadow:0 2px 6px rgba(21,79,143,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:22px 18px;
+  }
+  figure.card{ margin:0; }
+  figure.card .photo{
+    aspect-ratio:4/3; border-radius:9px; overflow:hidden;
+    box-shadow:0 3px 10px rgba(21,79,143,0.18);
+    position:relative;
+  }
+  figure.card .photo img{ width:100%; height:100%; object-fit:cover; display:block;}
+  figure.card .photo::after{
+    content:""; position:absolute; inset:0; border-radius:9px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,0.5);
+  }
+  figcaption{ margin-top:8px; font-size:13px; line-height:1.35;}
+  figcaption .loc{ font-weight:700; color:var(--text-dark); display:block;}
+  figcaption .region{ color:var(--text-mid); display:block; font-size:12px; margin-bottom:2px;}
+  figcaption a{ font-weight:600; font-size:12.5px;}
+
+  footer{
+    text-align:center; font-size:12px; color:var(--text-mid);
+    padding:18px 20px 34px;
+  }
+
+  @media (max-width:820px){
+    .feature{grid-template-columns:1fr;}
+    .layout{grid-template-columns:1fr;}
+    .categories{ flex-direction:row; flex-wrap:wrap;}
+    .grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:480px){
+    .grid{grid-template-columns:1fr 1fr;}
+    header.top{padding:14px 18px;}
+    nav.subnav{padding:10px 18px;}
+    .feature, .layout{padding-left:18px; padding-right:18px;}
+  }
+</style> </head>
+  <body>
+    <header class="top"> <span class="bokeh b1"></span><span class="bokeh b2"></span><span
+
+        class="bokeh b3"></span>
+      <div class="brandrow"> <a class="brand" href="index.html"> <img class="orb"
+
+            src="https://archive.org/download/themepack/icon.png" alt=""> <span>Windows
+            Personalisation Archive <span class="sub">Aero Personalisation
+              Archive Project</span> </span>
+        </a> </div>
+      <nav class="mainnav"> <a href="index.html">Home</a> <a href="personalisation-archive-themes-animals.html">Themes</a>
+        <a class="current" href="personalisation-archive-wallpapers-animals.html">Wallpapers</a>
+        <a href="personalisation-archive-gadgets.html">Gadgets</a> </nav>
+    </header>
+    <nav class="subnav"> <a href="index.html">Gallery home</a> <a href="personalisation-archive-themes-animals.html">Aero
+        theme packs</a> <a class="current" href="personalisation-archive-wallpapers-animals.html">Wallpapers</a>
+      <a href="personalisation-archive-gadgets.html">Desktop Gadgets</a> <a href="personalisation-archive-index.html">Archive
+        index</a> <a href="legacy-themes-interface.html">Legacy Themes Browser
+        (deprecated)</a> </nav>
+    <section class="feature">
+      <div>
+        <h1>Wallpapers</h1>
+        <div class="feature-main">
+          <div class="feature-thumb" aria-hidden="false"></div>
+          <div class="feature-text">
+            <h3>Running a newer version of Windows?</h3>
+            <p>If you're running Windows 7 or later, you can use theme packs,
+              which customise your whole computing experience, including
+              wallpapers, sounds, colours, cursors and more. If you're using an
+              older version of Windows, or just want to personalise the
+              Wallpaper, you can explore the collection below. </p>
+            <div class="links"> <a href="https://support.microsoft.com/en-us/windows/experience/personalization/change-the-desktop-background-in-windows#change-your-background">How
+                wallpapers work</a> &nbsp;|&nbsp; <a href="personalisation-archive-themes-animals.html">Explore
+                theme packs</a> </div>
+          </div>
+        </div>
+        <p class="feature-note">To use a wallpaper: choose <b>Download this
+            wallpaper</b>, right-click the image, then choose <b>Set as desktop
+            wallpaper</b>. </p>
+      </div>
+      <div class="extras">
+        <p><strong>Fancy dressing up the rest of your desktop?</strong></p>
+        <div class="icon-strip">
+          <div class="glassicon">🎵</div>
+          <div class="glassicon">⏱️</div>
+          <div class="glassicon">🦋</div>
+        </div>
+        <p style="margin-bottom:0;">Browse <a href="#">gadgets</a> to add
+          sound, motion and a little glass shine to your screen.</p>
+      </div>
+    </section>
+    <hr class="divider">
+    <div class="layout">
+      <ul class="categories">
+        <li><a href="personalisation-archive-wallpapers-animals.html">Animals,
+            fish, and bugs</a></li>
+        <li><a href="personalisation-archive-wallpapers-art.html">Art
+            (Illustrative)</a></li>
+        <li><a href="personalisation-archive-wallpapers-photo.html">Art
+            (Photographic)</a></li>
+        <li><a href="personalisation-archive-wallpapers-games.html">Games</a></li>
+        <li><a href="personalisation-archive-wallpapers-holidays.html">Holidays
+            and seasons</a></li>
+        <li><a href="personalisation-archive-wallpapers-nature.html">Natural
+            Wonders</a></li>
+        <li><a href="personalisation-archive-wallpapers-places.html">Places and
+            landscapes</a></li>
+        <li><a class="active" href="personalisation-archive-wallpapers-plants.html">Plants and
+            flowers</a></li>
+        <li><a href="personalisation-archive-wallpapers-community.html">From the
+            community</a></li>
+      </ul>
+      <div class="grid">
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/363bb54f-4cdf-4842-aa9e-120e3eea5c6f_5.jpg?raw=true"
+              alt="Alpine Forest (Valais, Switzerland)"></div>
+          <figcaption> <span class="loc">Alpine Forest (Valais, Switzerland)</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/363bb54f-4cdf-4842-aa9e-120e3eea5c6f_5.jpg"
+              title="Alpine Forest (Valais, Switzerland) - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/a00672ac-6bac-4eda-bdca-985036f30e10_13.jpg?raw=true"
+              alt="Aquatic Flowers"></div>
+          <figcaption> <span class="loc">Aquatic Flowers</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/a00672ac-6bac-4eda-bdca-985036f30e10_13.jpg"
+              title="Aquatic Flowers - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/bd850c34-8b25-46a8-ad19-f501f0318cdb_5.jpg?raw=true"
+              alt="Areca Palm Buds"></div>
+          <figcaption> <span class="loc">Areca Palm Buds</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/bd850c34-8b25-46a8-ad19-f501f0318cdb_5.jpg"
+              title="Areca Palm Buds - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/82a740e1-3e07-4f8a-809b-c5e381a1f860_15.jpg?raw=true"
+              alt="Autumn Leaf"></div>
+          <figcaption> <span class="loc">Autumn Leaf</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/82a740e1-3e07-4f8a-809b-c5e381a1f860_15.jpg"
+              title="Autumn Leaf - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/39dcc240-86df-4e6e-94ea-d4fe4759eafa_31.jpg?raw=true"
+              alt="Azaleas"></div>
+          <figcaption> <span class="loc">Azaleas</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/39dcc240-86df-4e6e-94ea-d4fe4759eafa_31.jpg"
+              title="Azaleas - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/abba3f36-8021-423c-99c8-759f33829d59_5.jpg?raw=true"
+              alt="Bamboo Forest (Japan)"></div>
+          <figcaption> <span class="loc">Bamboo Forest (Japan)</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/abba3f36-8021-423c-99c8-759f33829d59_5.jpg"
+              title="Bamboo Forest (Japan) - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/b3ec8f36-f487-4bf9-8a70-a38ebc1b8742_5.jpg?raw=true"
+              alt="Bee and Poppy"></div>
+          <figcaption> <span class="loc">Bee and Poppy</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/b3ec8f36-f487-4bf9-8a70-a38ebc1b8742_5.jpg"
+              title="Bee and Poppy - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/b197b879-626b-44e8-b95e-2d29ac7c9c5e_5.jpg?raw=true"
+              alt="Bee and Waterlily"></div>
+          <figcaption> <span class="loc">Bee and Waterlily</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/b197b879-626b-44e8-b95e-2d29ac7c9c5e_5.jpg"
+              title="Bee and Waterlily - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/5c2b855a-f386-473c-8f17-59ef272ea16a_5.jpg?raw=true"
+              alt="Beech Tree Forest (Wuppertal, Germany)"></div>
+          <figcaption> <span class="loc">Beech Tree Forest (Wuppertal, Germany)</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/5c2b855a-f386-473c-8f17-59ef272ea16a_5.jpg"
+              title="Beech Tree Forest (Wuppertal, Germany) - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/d6bf10b2-61e2-4249-bd91-9189149ac03d_5.jpg?raw=true"
+              alt="Beech Tree Sapling"></div>
+          <figcaption> <span class="loc">Beech Tree Sapling</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/d6bf10b2-61e2-4249-bd91-9189149ac03d_5.jpg"
+              title="Beech Tree Sapling - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/39a4113c-de55-4032-a789-dab2a38b76bb_6.jpg?raw=true"
+              alt="Bee on Yellow Flower"></div>
+          <figcaption> <span class="loc">Bee on Yellow Flower</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/39a4113c-de55-4032-a789-dab2a38b76bb_6.jpg"
+              title="Bee on Yellow Flower - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/ab8825ee-520d-4147-beff-64b08115342e_5.jpg?raw=true"
+              alt="Bird on Branch"></div>
+          <figcaption> <span class="loc">Bird on Branch</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/ab8825ee-520d-4147-beff-64b08115342e_5.jpg"
+              title="Bird on Branch - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/8cdea8e3-2ab8-4cae-8c02-fb723da988df_5.jpg?raw=true"
+              alt="Black-and-White Daisy"></div>
+          <figcaption> <span class="loc">Black-and-White Daisy</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/8cdea8e3-2ab8-4cae-8c02-fb723da988df_5.jpg"
+              title="Black-and-White Daisy - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/0252bf93-ce9c-4342-bc7b-4affe2985852_9.jpg?raw=true"
+              alt="Blooming in Fuchsia"></div>
+          <figcaption> <span class="loc">Blooming in Fuchsia</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/0252bf93-ce9c-4342-bc7b-4affe2985852_9.jpg"
+              title="Blooming in Fuchsia - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/c41635ec-cd9e-40a1-8e1d-abb27b069b43_5.jpg?raw=true"
+              alt="Bright Flower"></div>
+          <figcaption> <span class="loc">Bright Flower</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/c41635ec-cd9e-40a1-8e1d-abb27b069b43_5.jpg"
+              title="Bright Flower - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/e7e3783d-eb89-4529-8d2e-7e62acc24d22_9.jpg?raw=true"
+              alt="Budding in Pink"></div>
+          <figcaption> <span class="loc">Budding in Pink</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/e7e3783d-eb89-4529-8d2e-7e62acc24d22_9.jpg"
+              title="Budding in Pink - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/e24b069a-bcbf-4f84-8960-b93db2120782_24.jpg?raw=true"
+              alt="Butterfly in Yellow Flowers"></div>
+          <figcaption> <span class="loc">Butterfly in Yellow Flowers</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/e24b069a-bcbf-4f84-8960-b93db2120782_24.jpg"
+              title="Butterfly in Yellow Flowers - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/27439835-b3a9-472b-bed1-fa646d8d475c_13.jpg?raw=true"
+              alt="Butterfly in Pink Flowers"></div>
+          <figcaption> <span class="loc">Butterfly in Pink Flowers</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/27439835-b3a9-472b-bed1-fa646d8d475c_13.jpg"
+              title="Butterfly in Pink Flowers - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/0287b4c6-168b-4b0f-9338-4cb426a3cd74_13.jpg?raw=true"
+              alt="Buzzing Bee"></div>
+          <figcaption> <span class="loc">Buzzing Bee</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/0287b4c6-168b-4b0f-9338-4cb426a3cd74_13.jpg"
+              title="Buzzing Bee - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/59679dbe-aea8-4a71-97b2-d6204b1fe649_6.jpg?raw=true"
+              alt="Carambolas"></div>
+          <figcaption> <span class="loc">Carambolas</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/59679dbe-aea8-4a71-97b2-d6204b1fe649_6.jpg"
+              title="Carambolas - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/a983f037-4e8a-4e40-9a2c-bac074ddfd24_6.jpg?raw=true"
+              alt="Cherry Blossoms"></div>
+          <figcaption> <span class="loc">Cherry Blossoms</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/a983f037-4e8a-4e40-9a2c-bac074ddfd24_6.jpg"
+              title="Cherry Blossoms - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/c29bff08-39c4-44dd-a144-1656f9e610ec_6.jpg?raw=true"
+              alt="Cherry Trees of Hirosaki Castle (Japan)"></div>
+          <figcaption> <span class="loc">Cherry Trees of Hirosaki Castle (Japan)</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/c29bff08-39c4-44dd-a144-1656f9e610ec_6.jpg"
+              title="Cherry Trees of Hirosaki Castle (Japan) - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/3e9d780c-c6b3-41a6-8f71-578d708d5478_14.jpg?raw=true"
+              alt="Chili Pepper"></div>
+          <figcaption> <span class="loc">Chili Pepper</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/3e9d780c-c6b3-41a6-8f71-578d708d5478_14.jpg"
+              title="Chili Pepper - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/0c8013e4-0b98-4651-9d25-9e34704f3e4f_13.jpg?raw=true"
+              alt="Dandelion"></div>
+          <figcaption> <span class="loc">Dandelion</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/0c8013e4-0b98-4651-9d25-9e34704f3e4f_13.jpg"
+              title="Dandelion - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/001d4b1b-2dc0-440d-a20d-18703154cb7c_5.jpg?raw=true"
+              alt="Dandelion in Seed"></div>
+          <figcaption> <span class="loc">Dandelion in Seed</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/001d4b1b-2dc0-440d-a20d-18703154cb7c_5.jpg"
+              title="Dandelion in Seed - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/30d3f7c2-c06a-46e3-a929-2520ebf5ec0f_5.jpg?raw=true"
+              alt="Delicate Petals"></div>
+          <figcaption> <span class="loc">Delicate Petals</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/30d3f7c2-c06a-46e3-a929-2520ebf5ec0f_5.jpg"
+              title="Delicate Petals - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/675f3a33-c51d-4e5a-9a02-7fbad63a0c29_11.jpg?raw=true"
+              alt="Dew on Tomato Plant"></div>
+          <figcaption> <span class="loc">Dew on Tomato Plant</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/675f3a33-c51d-4e5a-9a02-7fbad63a0c29_11.jpg"
+              title="Dew on Tomato Plant - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/7d76630f-0613-4bb8-9459-f0ed04103029_11.jpg?raw=true"
+              alt="Dry Leaves"></div>
+          <figcaption> <span class="loc">Dry Leaves</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/7d76630f-0613-4bb8-9459-f0ed04103029_11.jpg"
+              title="Dry Leaves - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/76ef050a-732d-4219-8993-90b54f7c9029_18.jpg?raw=true"
+              alt="Eerie Forest"></div>
+          <figcaption> <span class="loc">Eerie Forest</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/76ef050a-732d-4219-8993-90b54f7c9029_18.jpg"
+              title="Eerie Forest - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/e31031c4-45fc-48ee-8d63-824aebfc2dee_57.jpg?raw=true"
+              alt="English Bluebells"></div>
+          <figcaption> <span class="loc">English Bluebells</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/e31031c4-45fc-48ee-8d63-824aebfc2dee_57.jpg"
+              title="English Bluebells - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/3ca0f6fd-0dae-45f9-a136-5edfd58e8f21_6.jpg?raw=true"
+              alt="Fairy Duster"></div>
+          <figcaption> <span class="loc">Fairy Duster</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/3ca0f6fd-0dae-45f9-a136-5edfd58e8f21_6.jpg"
+              title="Fairy Duster - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/c9270a32-4062-45c3-9de3-e9b119f9a984_13.jpg?raw=true"
+              alt="Golden Leaves"></div>
+          <figcaption> <span class="loc">Golden Leaves</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/c9270a32-4062-45c3-9de3-e9b119f9a984_13.jpg"
+              title="Golden Leaves - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/e4703bd0-742d-4c79-947a-9d0873c969dc_12.jpg?raw=true"
+              alt="Grapes"></div>
+          <figcaption> <span class="loc">Grapes</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/e4703bd0-742d-4c79-947a-9d0873c969dc_12.jpg"
+              title="Grapes - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/595fa053-6e15-42ad-992e-9d2f39f69593_21.jpg?raw=true"
+              alt="Grasshopper"></div>
+          <figcaption> <span class="loc">Grasshopper</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/595fa053-6e15-42ad-992e-9d2f39f69593_21.jpg"
+              title="Grasshopper - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/410e18cc-5b28-43ad-91ed-cfa658416632_5.jpg?raw=true"
+              alt="Green Leaves"></div>
+          <figcaption> <span class="loc">Green Leaves</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/410e18cc-5b28-43ad-91ed-cfa658416632_5.jpg"
+              title="Green Leaves - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/e7662352-b6fe-4632-a17c-9e6d85790d85_5.jpg?raw=true"
+              alt="Hidden Snails"></div>
+          <figcaption> <span class="loc">Hidden Snails</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/e7662352-b6fe-4632-a17c-9e6d85790d85_5.jpg"
+              title="Hidden Snails - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/9f38ef8d-4faa-4ce6-b095-9248f34ae797_6.jpg?raw=true"
+              alt="Honeysuckle Berries"></div>
+          <figcaption> <span class="loc">Honeysuckle Berries</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/9f38ef8d-4faa-4ce6-b095-9248f34ae797_6.jpg"
+              title="Honeysuckle Berries - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/ecefbbed-9a39-475b-9070-8cb6ebc4f87e_6.jpg?raw=true"
+              alt="Juniper Berries"></div>
+          <figcaption> <span class="loc">Juniper Berries</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/ecefbbed-9a39-475b-9070-8cb6ebc4f87e_6.jpg"
+              title="Juniper Berries - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/0499760a-9d5b-4fb4-b467-fd85755f4ad7_5.jpg?raw=true"
+              alt="Ladybug on Thistle"></div>
+          <figcaption> <span class="loc">Ladybug on Thistle</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/0499760a-9d5b-4fb4-b467-fd85755f4ad7_5.jpg"
+              title="Ladybug on Thistle - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/a488a0f4-7d8e-4ac2-a43b-2d89fb67446b_20.jpg?raw=true"
+              alt="Maple Leaves"></div>
+          <figcaption> <span class="loc">Maple Leaves</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/a488a0f4-7d8e-4ac2-a43b-2d89fb67446b_20.jpg"
+              title="Maple Leaves - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/f2c05b74-80dd-49ba-ba4c-cd9f1118da34_5.jpg?raw=true"
+              alt="Morning Dew"></div>
+          <figcaption> <span class="loc">Morning Dew</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/f2c05b74-80dd-49ba-ba4c-cd9f1118da34_5.jpg"
+              title="Morning Dew - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/ecbcffca-0118-459e-9a09-aa2bdaef0888_5.jpg?raw=true"
+              alt="Moss"></div>
+          <figcaption> <span class="loc">Moss</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/ecbcffca-0118-459e-9a09-aa2bdaef0888_5.jpg"
+              title="Moss - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/730d5450-76e5-4116-81cf-ba1870897db7_5.jpg?raw=true"
+              alt="Moss and Sapling"></div>
+          <figcaption> <span class="loc">Moss and Sapling</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/730d5450-76e5-4116-81cf-ba1870897db7_5.jpg"
+              title="Moss and Sapling - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/bdae0ee9-a5f7-40e4-aec8-a1a682fb9ef8_6.jpg?raw=true"
+              alt="Orange Poppy"></div>
+          <figcaption> <span class="loc">Orange Poppy</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/bdae0ee9-a5f7-40e4-aec8-a1a682fb9ef8_6.jpg"
+              title="Orange Poppy - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/4f956493-93e1-4720-937b-7c65bdc83819_7.jpg?raw=true"
+              alt="Peony"></div>
+          <figcaption> <span class="loc">Peony</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/4f956493-93e1-4720-937b-7c65bdc83819_7.jpg"
+              title="Peony - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/c04872fe-f7f8-4bfa-ab35-919ad0324e99_9.jpg?raw=true"
+              alt="Pink Flowers"></div>
+          <figcaption> <span class="loc">Pink Flowers</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/c04872fe-f7f8-4bfa-ab35-919ad0324e99_9.jpg"
+              title="Pink Flowers - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/837350a7-62f1-45f3-a730-a8c31040c48f_6.jpg?raw=true"
+              alt="Pink Poppy Bud"></div>
+          <figcaption> <span class="loc">Pink Poppy Bud</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/837350a7-62f1-45f3-a730-a8c31040c48f_6.jpg"
+              title="Pink Poppy Bud - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/9642e39d-1bf4-45f6-a02c-117099e4be2e_5.jpg?raw=true"
+              alt="Pollinating Bee"></div>
+          <figcaption> <span class="loc">Pollinating Bee</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/9642e39d-1bf4-45f6-a02c-117099e4be2e_5.jpg"
+              title="Pollinating Bee - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/8600bb9d-5621-40fa-b7d0-42fe3f403bf9_6.jpg?raw=true"
+              alt="Pride of Barbados Flower"></div>
+          <figcaption> <span class="loc">Pride of Barbados Flower</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/8600bb9d-5621-40fa-b7d0-42fe3f403bf9_6.jpg"
+              title="Pride of Barbados Flower - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/2df011ba-fb55-4d9f-b4bd-cde9052e86ac_57.jpg?raw=true"
+              alt="Purple Flowers"></div>
+          <figcaption> <span class="loc">Purple Flowers</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/2df011ba-fb55-4d9f-b4bd-cde9052e86ac_57.jpg"
+              title="Purple Flowers - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/0c3cb367-e275-4c0a-add5-724bff4a0f01_13.jpg?raw=true"
+              alt="Purple Leaves"></div>
+          <figcaption> <span class="loc">Purple Leaves</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/0c3cb367-e275-4c0a-add5-724bff4a0f01_13.jpg"
+              title="Purple Leaves - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/fb810b10-8cc6-4094-8482-6a52d50ad07c_13.jpg?raw=true"
+              alt="Raindrops in the Forest"></div>
+          <figcaption> <span class="loc">Raindrops in the Forest</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/fb810b10-8cc6-4094-8482-6a52d50ad07c_13.jpg"
+              title="Raindrops in the Forest - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/9c3b2185-6965-4466-868e-deb5062102c5_6.jpg?raw=true"
+              alt="Raspberries"></div>
+          <figcaption> <span class="loc">Raspberries</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/9c3b2185-6965-4466-868e-deb5062102c5_6.jpg"
+              title="Raspberries - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/b2438858-a480-437b-bd0a-871efb8d1b78_6.jpg?raw=true"
+              alt="Red Flower"></div>
+          <figcaption> <span class="loc">Red Flower</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/b2438858-a480-437b-bd0a-871efb8d1b78_6.jpg"
+              title="Red Flower - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/1b49146d-3bb5-4744-9961-7104a5c195bb_6.jpg?raw=true"
+              alt="Red Leaves"></div>
+          <figcaption> <span class="loc">Red Leaves</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/1b49146d-3bb5-4744-9961-7104a5c195bb_6.jpg"
+              title="Red Leaves - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/98402a33-e252-421a-818d-25e5d8c98da6_13.jpg?raw=true"
+              alt="Rice Plants"></div>
+          <figcaption> <span class="loc">Rice Plants</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/98402a33-e252-421a-818d-25e5d8c98da6_13.jpg"
+              title="Rice Plants - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/6ebbf82d-4aad-44e7-ac95-de4e42d978fe_5.jpg?raw=true"
+              alt="Rice Seeds"></div>
+          <figcaption> <span class="loc">Rice Seeds</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/6ebbf82d-4aad-44e7-ac95-de4e42d978fe_5.jpg"
+              title="Rice Seeds - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/765c6322-b5b8-4d03-9be2-243bc3216297_11.jpg?raw=true"
+              alt="Roadside Flowers"></div>
+          <figcaption> <span class="loc">Roadside Flowers</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/765c6322-b5b8-4d03-9be2-243bc3216297_11.jpg"
+              title="Roadside Flowers - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/20a7d274-3fbd-4de5-ac4a-87e3d6251527_13.jpg?raw=true"
+              alt="Rose Bouquet"></div>
+          <figcaption> <span class="loc">Rose Bouquet</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/20a7d274-3fbd-4de5-ac4a-87e3d6251527_13.jpg"
+              title="Rose Bouquet - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/abe62350-27cc-4d1b-9b55-4767a8a23065_6.jpg?raw=true"
+              alt="Rose Petal"></div>
+          <figcaption> <span class="loc">Rose Petal</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/abe62350-27cc-4d1b-9b55-4767a8a23065_6.jpg"
+              title="Rose Petal - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/4d4b1fc0-8488-40e1-9f2a-5b5c580f71ab_6.jpg?raw=true"
+              alt="Rose with Dewdrops"></div>
+          <figcaption> <span class="loc">Rose with Dewdrops</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/4d4b1fc0-8488-40e1-9f2a-5b5c580f71ab_6.jpg"
+              title="Rose with Dewdrops - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/666c70d9-6ca3-4b38-b7c9-dd6beb45fb46_5.jpg?raw=true"
+              alt="Sapling"></div>
+          <figcaption> <span class="loc">Sapling</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/666c70d9-6ca3-4b38-b7c9-dd6beb45fb46_5.jpg"
+              title="Sapling - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/87c2b126-35c4-4cf9-a64b-cd26ad218747_9.jpg?raw=true"
+              alt="Scarlet Rose"></div>
+          <figcaption> <span class="loc">Scarlet Rose</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/87c2b126-35c4-4cf9-a64b-cd26ad218747_9.jpg"
+              title="Scarlet Rose - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/696236b2-c1e6-4c3e-866b-fa6413e8ec13_5.jpg?raw=true"
+              alt="Seeding Dandelion"></div>
+          <figcaption> <span class="loc">Seeding Dandelion</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/696236b2-c1e6-4c3e-866b-fa6413e8ec13_5.jpg"
+              title="Seeding Dandelion - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/c05646d9-354c-4b7b-afcb-e22d3b0258a2_13.jpg?raw=true"
+              alt="Serenity"></div>
+          <figcaption> <span class="loc">Serenity</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/c05646d9-354c-4b7b-afcb-e22d3b0258a2_13.jpg"
+              title="Serenity - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/01defee4-da8a-4cf2-9a7a-4284730a72eb_9.jpg?raw=true"
+              alt="Single Berry"></div>
+          <figcaption> <span class="loc">Single Berry</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/01defee4-da8a-4cf2-9a7a-4284730a72eb_9.jpg"
+              title="Single Berry - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/9dc641a2-7520-4c2a-a83d-64406e8d915f_5.jpg?raw=true"
+              alt="Spring Blossom"></div>
+          <figcaption> <span class="loc">Spring Blossom</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/9dc641a2-7520-4c2a-a83d-64406e8d915f_5.jpg"
+              title="Spring Blossom - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/0bc16f84-28b5-4021-aedd-1b623f1633c3_13.jpg?raw=true"
+              alt="Sunflower"></div>
+          <figcaption> <span class="loc">Sunflower</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/0bc16f84-28b5-4021-aedd-1b623f1633c3_13.jpg"
+              title="Sunflower - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/89d7061a-c58b-475e-9e02-9fc07e673c77_5.jpg?raw=true"
+              alt="Sunflower Field (Franconia, Germany)"></div>
+          <figcaption> <span class="loc">Sunflower Field (Franconia, Germany)</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/89d7061a-c58b-475e-9e02-9fc07e673c77_5.jpg"
+              title="Sunflower Field (Franconia, Germany) - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/a06f032f-8d4f-401d-bbb7-ac3a6fbb1fba_5.jpg?raw=true"
+              alt="Sunlight in Poppy Field"></div>
+          <figcaption> <span class="loc">Sunlight in Poppy Field</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/a06f032f-8d4f-401d-bbb7-ac3a6fbb1fba_5.jpg"
+              title="Sunlight in Poppy Field - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/cedb7412-f334-4012-b301-cf227abd941b_5.jpg?raw=true"
+              alt="Sunlit Flower"></div>
+          <figcaption> <span class="loc">Sunlit Flower</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/cedb7412-f334-4012-b301-cf227abd941b_5.jpg"
+              title="Sunlit Flower - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/90743408-bc04-4e59-8fde-e6632d33724e_13.jpg?raw=true"
+              alt="Tulips"></div>
+          <figcaption> <span class="loc">Tulips</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/90743408-bc04-4e59-8fde-e6632d33724e_13.jpg"
+              title="Tulips - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/56722b75-6cba-49b6-bcda-362d0da75b9c_5.jpg?raw=true"
+              alt="Violets"></div>
+          <figcaption> <span class="loc">Violets</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/56722b75-6cba-49b6-bcda-362d0da75b9c_5.jpg"
+              title="Violets - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/db19254d-8fdd-4573-b6fd-88d49c720938_6.jpg?raw=true"
+              alt="Waterdrops"></div>
+          <figcaption> <span class="loc">Waterdrops</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/db19254d-8fdd-4573-b6fd-88d49c720938_6.jpg"
+              title="Waterdrops - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/096ede78-468d-46fe-b5e7-174cf4f0d9fe_6.jpg?raw=true"
+              alt="Waterdrops on Petals"></div>
+          <figcaption> <span class="loc">Waterdrops on Petals</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/096ede78-468d-46fe-b5e7-174cf4f0d9fe_6.jpg"
+              title="Waterdrops on Petals - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/17d8749e-c3ee-4cdb-9713-982fbad7fded_6.jpg?raw=true"
+              alt="Waterlily"></div>
+          <figcaption> <span class="loc">Waterlily</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/17d8749e-c3ee-4cdb-9713-982fbad7fded_6.jpg"
+              title="Waterlily - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/b3d45106-08a1-4909-88fa-a957435d428d_12.jpg?raw=true"
+              alt="Wheat"></div>
+          <figcaption> <span class="loc">Wheat</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/b3d45106-08a1-4909-88fa-a957435d428d_12.jpg"
+              title="Wheat - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/bf7ec114-ae57-470b-87fb-7303b0704e64_5.jpg?raw=true"
+              alt="Wheat Close-Up"></div>
+          <figcaption> <span class="loc">Wheat Close-Up</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/bf7ec114-ae57-470b-87fb-7303b0704e64_5.jpg"
+              title="Wheat Close-Up - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/wallpaperthumbs/PlantsFlwrsThumbs/abb7b8cc-6665-4427-9c3a-4ce63374aabb_18.jpg?raw=true"
+              alt="Yellow Flowers"></div>
+          <figcaption> <span class="loc">Yellow Flowers</span> <span class="region">Plants and Flowers</span>
+            <a href="https://archive.org/download/windows-wallpaper-archive/Plants%20and%20Flowers/abb7b8cc-6665-4427-9c3a-4ce63374aabb_18.jpg"
+              title="Yellow Flowers - Download">Download this wallpaper</a>
+          </figcaption> </figure>
+
+      </div>
+    </div>
+    <footer>The Windows Personalisation Archive is an independent, fan-made
+      archive of official Microsoft content - not affiliated with or endorsed by
+      any operating system vendor, including Microsoft Corporation.</footer>
+  </body>
+</html>
