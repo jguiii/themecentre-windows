@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Personalisation — Windows Media Player Visualisations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="https://archive.org/download/themepack/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap"
+      rel="stylesheet">
+    <style>
+
+  :root{
+    --sky-deep:#154f8f;
+    --sky-mid:#4fa3e3;
+    --sky-hi:#bfe6ff;
+    --sky-pale:#eaf7ff;
+    --glass:rgba(255,255,255,0.5);
+    --glass-strong:rgba(255,255,255,0.78);
+    --teal:#5ed9c3;
+    --teal-deep:#2fae94;
+    --text-dark:#123253;
+    --text-mid:#3d6690;
+    --line:rgba(21,79,143,0.18);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito Sans', sans-serif;
+    color:var(--text-dark);
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(255,255,255,0.55), transparent 60%),
+      linear-gradient(180deg, var(--sky-pale) 0%, #f6fbff 40%, #ffffff 100%);
+    min-height:100vh;
+  }
+
+  a{color:var(--sky-deep); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--teal-deep); outline-offset:2px;}
+
+  h1,h2,h3,.brand,.navlink,.category{font-family:'Quicksand', sans-serif;}
+
+  /* ---------- decorative bokeh ---------- */
+  .bokeh{position:absolute; border-radius:50%; filter:blur(0px); pointer-events:none;}
+
+  /* ---------- header ---------- */
+  header.top{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.15) 55%, rgba(255,255,255,0) 100%),
+      linear-gradient(180deg, var(--sky-hi) 0%, var(--sky-mid) 55%, var(--sky-deep) 100%);
+    padding:18px 32px 14px;
+    box-shadow:0 2px 10px rgba(21,79,143,0.25);
+  }
+  header.top::before{
+    content:"";
+    position:absolute; left:-10%; top:-60%;
+    width:120%; height:140%;
+    background:radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.55), transparent 55%);
+    pointer-events:none;
+  }
+  .bokeh.b1{width:70px;height:70px; right:12%; top:10px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.85), rgba(255,255,255,0.05) 60%);}
+  .bokeh.b2{width:36px;height:36px; right:22%; top:52px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.7), rgba(255,255,255,0.05) 60%);}
+  .bokeh.b3{width:20px;height:20px; right:8%; top:60px; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.65), rgba(255,255,255,0.05) 60%);}
+
+  .brandrow{
+    display:flex; align-items:center; justify-content:space-between;
+    position:relative; z-index:1;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-size:26px; font-weight:700; color:#ffffff;
+    text-shadow:0 1px 2px rgba(10,40,70,0.35);
+  }
+  .brand:hover{text-decoration:none;}
+
+  .orb{width:34px; height:34px;}
+
+  .brand .sub{
+    font-family:'Nunito Sans', sans-serif;
+    font-weight:400; font-size:12px; color:rgba(255,255,255,0.85);
+    display:block; margin-top:1px;
+  }
+
+  nav.mainnav{
+    display:flex; gap:26px; margin-top:16px;
+    position:relative; z-index:1;
+    flex-wrap:wrap;
+  }
+  nav.mainnav a{
+    color:#ffffff; font-weight:600; font-size:14.5px;
+    text-shadow:0 1px 2px rgba(10,40,70,0.35);
+    padding-bottom:6px; border-bottom:2px solid transparent;
+  }
+  nav.mainnav a:hover{ text-decoration:none; border-bottom:2px solid rgba(255,255,255,0.85);}
+  nav.mainnav a.current{ border-bottom:2px solid rgba(255,255,255,0.85);}
+
+  nav.subnav{
+    background:var(--glass-strong);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:10px 32px;
+    display:flex; gap:22px; flex-wrap:wrap;
+    font-size:13.5px; font-weight:600;
+  }
+  nav.subnav a.current{color:var(--text-dark); text-decoration:none; cursor:default;}
+  nav.subnav a.current:hover{text-decoration:none;}
+
+  /* ---------- hero / feature strip ---------- */
+  .feature{
+    max-width:1180px; margin:0 auto;
+    padding:30px 32px 18px;
+    display:grid; grid-template-columns:1fr 300px; gap:28px;
+  }
+  .feature h1{
+    font-size:30px; margin:0 0 14px; color:var(--sky-deep); font-weight:700;
+  }
+  .feature-main{
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .feature-thumb{
+    width:120px; height:88px; border-radius:8px; flex:none;
+    background:linear-gradient(160deg,#dff2e8,#a9d9bf 55%, #6fbf8f);
+    box-shadow:0 3px 8px rgba(21,79,143,0.2);
+    position:relative; overflow:hidden;
+  }
+  .feature-thumb::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 70%, rgba(0,0,0,0.15), transparent 60%);
+  }
+  .feature-text h3{ margin:0 0 4px; font-size:15px; color:var(--text-dark);}
+  .feature-text p{ margin:0 0 8px; font-size:13.5px; color:var(--text-mid); max-width:46ch;}
+  .feature-text .links{font-size:13px;}
+  .feature-note{font-size:12.5px; color:var(--text-mid); margin-top:14px;}
+  .feature-note b{color:var(--text-dark);}
+
+  .extras{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,0.6);
+    border-radius:14px;
+    padding:16px 18px;
+    box-shadow:0 4px 14px rgba(21,79,143,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .extras p{margin:0 0 10px; font-size:13.5px; color:var(--text-mid);}
+  .icon-strip{display:flex; gap:10px; margin-bottom:12px;}
+  .glassicon{
+    width:44px; height:44px; border-radius:10px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.9), rgba(255,255,255,0.25));
+    border:1px solid rgba(255,255,255,0.7);
+    box-shadow:0 2px 6px rgba(21,79,143,0.18), inset 0 1px 2px rgba(255,255,255,0.9);
+    display:flex; align-items:center; justify-content:center;
+    font-size:18px;
+  }
+
+  hr.divider{
+    max-width:1180px; margin:6px auto 0; border:none;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- body layout ---------- */
+  .layout{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:220px 1fr;
+    gap:28px; padding:24px 32px 60px;
+  }
+
+  .categories{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .categories a{
+    display:block; padding:9px 14px; border-radius:9px;
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,0.55);
+    color:var(--sky-deep); font-weight:600; font-size:13.5px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .categories a:hover{ text-decoration:none; background:var(--glass-strong);}
+  .categories a.active{
+    background:linear-gradient(160deg, var(--sky-hi), #9fd6ff);
+    color:var(--text-dark);
+    border:1px solid rgba(21,79,143,0.25);
+    box-shadow:0 2px 6px rgba(21,79,143,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:22px 18px;
+  }
+  figure.card{ margin:0; }
+  figure.card .photo{
+  aspect-ratio:1/1; border-radius:9px; overflow:hidden;
+  box-shadow:0 3px 10px rgba(21,79,143,0.18);
+  position:relative;
+  }
+  figure.card .photo img{ width:100%; height:100%; object-fit:cover; display:block;}
+  figure.card .photo::after{
+  content:""; position:absolute; inset:0; border-radius:9px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.5);
+  }
+
+  /* ---------- image placeholder ---------- */
+  figure.card .photo.placeholder{
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px;
+    background:
+      repeating-linear-gradient(45deg, rgba(21,79,143,0.05) 0 10px, rgba(21,79,143,0.02) 10px 20px),
+      linear-gradient(160deg, #eef6ff, #dbeaf7);
+    border:1.5px dashed rgba(21,79,143,0.3);
+  }
+  figure.card .photo.placeholder .ph-icon{
+    font-size:26px; opacity:0.55; line-height:1;
+  }
+  figure.card .photo.placeholder .ph-text{
+    font-size:11px; font-weight:600; color:var(--text-mid); opacity:0.75;
+    text-align:center; padding:0 8px;
+  }
+
+  figcaption{ margin-top:8px; font-size:13px; line-height:1.35;}
+  figcaption .loc{ font-weight:700; color:var(--text-dark); display:block;}
+  figcaption .region{ color:var(--text-mid); display:block; font-size:12px; margin-bottom:2px;}
+  figcaption a{ font-weight:600; font-size:12.5px;}
+
+  footer{
+    text-align:center; font-size:12px; color:var(--text-mid);
+    padding:18px 20px 34px;
+  }
+
+  @media (max-width:820px){
+    .feature{grid-template-columns:1fr;}
+    .layout{grid-template-columns:1fr;}
+    .categories{ flex-direction:row; flex-wrap:wrap;}
+    .grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:480px){
+    .grid{grid-template-columns:1fr 1fr;}
+    header.top{padding:14px 18px;}
+    nav.subnav{padding:10px 18px;}
+    .feature, .layout{padding-left:18px; padding-right:18px;}
+  }
+</style> </head>
+  <body>
+    <header class="top"> <span class="bokeh b1"></span><span class="bokeh b2"></span><span
+        class="bokeh b3"></span>
+      <div class="brandrow"> <a class="brand" href="index.html"> <img class="orb"
+            src="https://archive.org/download/themepack/icon.png" alt=""> <span>Windows
+            Personalisation Archive <span class="sub">Aero Personalisation
+              Archive Project</span> </span> </a> </div>
+      <nav class="mainnav"> <a href="index.html">Home</a> <a class="current" href="personalisation-archive-themes-animals.html">Themes</a>
+        <a href="personalisation-archive-wallpapers-animals.html">Wallpapers</a>
+        <a href="personalisation-archive-gadgets.html">Gadgets</a> </nav>
+    </header>
+    <nav class="subnav"> <a href="index.html">Gallery home</a> <a class="current"
+        href="personalisation-archive-themes-animals.html">Aero visualisations</a>
+      <a href="personalisation-archive-wallpapers-animals.html">Wallpapers</a> <a
+        href="personalisation-archive-gadgets.html">Desktop Gadgets</a> <a href="personalisation-archive-index.html">Archive
+        index</a> <a href="personalisation-archive-visualisations.html">Windows
+        Media Player Visualisations</a> </nav>
+    <section class="feature">
+      <div>
+        <h1>Windows Media Player Visualisations</h1>
+        <div class="feature-main">
+          <div class="feature-thumb" aria-hidden="true"></div>
+          <div class="feature-text">
+            <h3>Personalise your Windows Media Player Experience</h3>
+            <p>These visualisations work with various versions of Windows Media
+              Player, and some may have more than one version for different
+              versions. If you're running on Windows 7 or later, this shouldn't
+              matter, but on older versions of Windows, you may need to check.</p>
+            <div class="links"> <a href="https://www.microsoft.com/en-us/windows/end-of-support">Get
+                information about upgrading to a newer version of Windows</a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="extras">
+        <p><strong>Fancy dressing up the rest of your desktop?</strong></p>
+        <div class="icon-strip">
+          <div class="glassicon">🎵</div>
+          <div class="glassicon">⏱️</div>
+          <div class="glassicon">🦇</div>
+        </div>
+        <p style="margin-bottom:0;">Browse <a href="personalisation-archive-gadgets">Gadgets</a>
+          to add sound, motion and a little glass shine to your screen.</p>
+      </div>
+    </section>
+    <hr class="divider">
+    <div class="layout">
+      <ul class="categories">
+        <li><a class="active" href="personalisation-archive-visualisations.html">Visualisations</a></li>
+      </ul>
+      <div class="grid">
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/9SeriesDefault_square.png?raw=true"
+              alt="9 Series Default"></div>
+          <figcaption> <span class="loc">9 Series Default</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/9SeriesDefault.wmz"
+              target="_blank" rel="noopener" title="9 Series Default — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Activate_square.png?raw=true"
+              alt="Activate"></div>
+          <figcaption> <span class="loc">Activate</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/activate.wmz"
+              target="_blank" rel="noopener" title="Activate — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Age%20of%20Mythology%20MP%20XP_square.png?raw=true"
+              alt="Age of Mythology"></div>
+          <figcaption> <span class="loc">Age of Mythology</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Age_of_Mythology_MP7.wmz"
+              target="_blank" rel="noopener" title="Age of Mythology (MP7) — Download this visualisation">Download
+              this visualisation (MP7)</a></figcaption><figcaption><span class="region"></span><a
+              href="https://archive.org/download/windows-media-player-visualisations_202610/Age_of_Mythology_MPXP.wmz"
+              target="_blank" rel="noopener" title="Age of Mythology (MP8) — Download this visualisation">Download
+              this visualisation (MP8)</a><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/aikon_square.png?raw=true"
+              alt="aikon2"></div>
+          <figcaption> <span class="loc">aikon2&nbsp;</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/aikon2.wmz"
+              target="_blank" rel="noopener" title="aikon2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/AilenTech_square.png?raw=true"
+              alt="Ailen Technology"></div>
+          <figcaption> <span class="loc">Alien Technology</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/AlienTechnology.wmz"
+              target="_blank" rel="noopener" title="Ailen Technology — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ailenware%20Darkstar_square.png?raw=true"
+              alt="Ailenware Darkstar"></div>
+          <figcaption> <span class="loc">Alienware Darkstar</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Alienware_Darkstar_WMP11.wmz"
+              target="_blank" rel="noopener" title="Ailenware Darkstar — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ailenware%20Invader_square.png?raw=true"
+              alt="Alienware Invader"></div>
+          <figcaption> <span class="loc">Alienware Invader</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Alienware_Invader_by_The_Skins_Factory.wmz"
+              target="_blank" rel="noopener" title="Alienware Invader — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <a href="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ailenware%20Teleport_square.png?raw=true"
+              title="Alienware Teleport"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ailenware%20Teleport_square.png?raw=true"
+                alt="Bunnies and Ducklings"></a></div>
+          <figcaption> <span class="loc">Alienware Teleport</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/AlienwareTeleport.wmz"
+              target="_blank" rel="noopener" title="Alienware Teleport — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/ALX%20Vortex_square.png?raw=true"
+              alt="ALX Vortex"></div>
+          <figcaption> <span class="loc">ALX Vortex</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/ALXVortex.wmz"
+              target="_blank" rel="noopener" title="ALX Vortex — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Amped%202_square.png?raw=true"
+              alt="Amped2"></div>
+          <figcaption> <span class="loc">Amped2</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/amped2.wmz"
+              target="_blank" rel="noopener" title="Amped2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Anemone_square.png?raw=true"
+              alt="Anemone"></div>
+          <figcaption> <span class="loc">Anemone</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/anemone.wmz"
+              target="_blank" rel="noopener" title="Anemone — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Anime_square.png?raw=true"
+              alt="Anime"></div>
+          <figcaption> <span class="loc">Anime</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/anime.wmz"
+              target="_blank" rel="noopener" title="Anime — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/AOE_square.png?raw=true"
+              alt="Age of Empires II: The Age of Kings"></div>
+          <figcaption> <span class="loc">Age of Empires II: The Age of Kings</span>
+            <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/aoe.wmz"
+              target="_blank" rel="noopener" title="Age of Empires II: The Age of Kings — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Arizona%20Diamondbacks_square.png?raw=true"
+              alt="Arizona Diamondbacks"></div>
+          <figcaption> <span class="loc">Arizona Diamondbacks</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Arizona%20Diamondbacks%20XP.wmz"
+              target="_blank" rel="noopener" title="Arizona Diamondbacks — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Asimov%20Radio_square.png?raw=true"
+              alt="Asimov Radio"></div>
+          <figcaption> <span class="loc">Asimov Radio</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Asimov_Radio.wmz"
+              target="_blank" rel="noopener" title="Asimov Radio — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/audio2_square.png?raw=true"
+              alt="audio2"></div>
+          <figcaption> <span class="loc">audio2</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/audio2.wmz"
+              target="_blank" rel="noopener" title="audio2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Back%20To%20The%20Future%20Trilogy_square.png?raw=true"
+              alt="Back to the Future Trilogy"></div>
+          <figcaption> <span class="loc">Back to the Future Trilogy</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Back%20to%20the%20Future%20Trilogy.wmz"
+              target="_blank" rel="noopener" title="Back To The Future Trilogy — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Batman%20Begins_square.png?raw=true"
+              alt="Batman Begins"></div>
+          <figcaption> <span class="loc">Batman Begins</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Batman%20Begins.wmz"
+              target="_blank" rel="noopener" title="Batman Begins — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Beck_square.png?raw=true"
+              alt="BECK"></div>
+          <figcaption> <span class="loc">BECK</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Beck.wmz"
+              target="_blank" rel="noopener" title="BECK - Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Biomechanical_square.png?raw=true"
+              alt="BIOMECHANICAL"></div>
+          <figcaption> <span class="loc">BIOMECHANICAL</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Biomechanical.wmz"
+              target="_blank" rel="noopener" title="BIOMECHANICAL — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Blackbar_square.png?raw=true"
+              alt="Blackbar"></div>
+          <figcaption> <span class="loc">Blackbar</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Blackbar.wmz"
+              target="_blank" rel="noopener" title="Blackbar — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Blinx_square.png?raw=true"
+              alt="Blinx"></div>
+          <figcaption> <span class="loc">Blinx</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Blinx.wmz"
+              target="_blank" rel="noopener" title="Blinx — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Blue%20Transparency_square.png?raw=true"
+              alt="BLUE TRANSPARENCY"></div>
+          <figcaption> <span class="loc">BLUE TRANSPARENCY</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/BLUE%20TRANSPARENCY.wmz"
+              target="_blank" rel="noopener" title="BLUE TRANSPARENCY — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/BlueCrush%20MPXP_square.png?raw=true"
+              alt="Blue Crush"></div>
+          <figcaption> <span class="loc">Blue Crush</span> <span class="region">Visualisations</span>
+          </figcaption><figcaption><span class="region"></span><a href="https://archive.org/download/windows-media-player-visualisations_202610/BlueCrush_MP7.wmz"
+              target="_blank" rel="noopener" title="Blue Crush (MP7) — Download this visualisation">Download
+              this visualisation (MP7)</a></figcaption><figcaption><span class="region"></span><a
+              href="https://archive.org/download/windows-media-player-visualisations_202610/BlueCrush_MPXP.wmz"
+              target="_blank" rel="noopener" title="Blue Crush (MP8) — Download this visualisation">Download
+              this visualisation (MP8)</a></figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Bluegrid_square.png?raw=true"
+              alt="bluegrid"></div>
+          <figcaption> <span class="loc">bluegrid</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/bluegrid.wmz"
+              target="_blank" rel="noopener" title="bluegrid — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/BlueJewel_square.png?raw=true"
+              alt="Blue Jewel by Thomas Freiberg"></div>
+          <figcaption> <span class="loc">Blue Jewel</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/BlueJewel.wmz"
+              target="_blank" rel="noopener" title="Blue Jewel — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/BlueSky_square.png?raw=true"
+              alt="BlueSky"></div>
+          <figcaption> <span class="loc">Bluesky</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Bluesky.wmz"
+              target="_blank" rel="noopener" title="Bluesky — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Bruteforce_square.png?raw=true"
+              alt="Brute Force"></div>
+          <figcaption> <span class="loc">Brute Force</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/bruteforce.wmz"
+              target="_blank" rel="noopener" title="Brute Force - Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Cablemusic_square.png?raw=true"
+              alt="Cable Music"></div>
+          <figcaption> <span class="loc">Cable Music</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Cablemusic.wmz"
+              target="_blank" rel="noopener" title="Cable Music - Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Canvas_square.png?raw=true"
+              alt="Canvas"></div>
+          <figcaption> <span class="loc">Canvas</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Canvas.wmz"
+              target="_blank" rel="noopener" title="Canvas — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Carbon_square.png?raw=true"
+              alt="Carbon"></div>
+          <figcaption> <span class="loc">Carbon</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/carbon.wmz"
+              target="_blank" rel="noopener" title="Carbon — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Catwoman_square.png?raw=true"
+              alt="Catwoman"></div>
+          <figcaption> <span class="loc">Catwoman</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Catwoman.wmz"
+              target="_blank" rel="noopener" title="Catwoman — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Cerulean_square.png?raw=true"
+              alt="cerulean"></div>
+          <figcaption> <span class="loc">cerulean</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/cerulean.wmz"
+              target="_blank" rel="noopener" title="cerulean — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Charlies%20Angles_square.png?raw=true"
+              alt="Charlie's Angels: Full Throttle"></div>
+          <figcaption> <span class="loc">Charlie's Angels: Full Throttle</span>
+            <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Charlies_Angels_Full_Throttle.wmz"
+              target="_blank" rel="noopener" title="Charlie's Angels: Full Throttle — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Chinese%20New%20Year%202005_square.png?raw=true"
+              alt="Chinese New Year 2005"></div>
+          <figcaption> <span class="loc">Chinese New Year 2005</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Chinese%20New%20Year%202005.wmz"
+              target="_blank" rel="noopener" title="Chinese New Year 2005 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Circle_square.png?raw=true"
+              alt="circle"></div>
+          <figcaption> <span class="loc">circle</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/circle.wmz"
+              target="_blank" rel="noopener" title="circle — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Classic_square.png?raw=true"
+              alt="Classic"></div>
+          <figcaption> <span class="loc">Classic</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Classic.wmz"
+              target="_blank" rel="noopener" title="Classic — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Classic%20Beta_square.png?raw=true"
+              alt="Classic (Beta)"></div>
+          <figcaption> <span class="loc">Classic (Beta)</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/classic%20beta.wmz"
+              target="_blank" rel="noopener" title="Classic (Beta) — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Classic%20Newer_square.png?raw=true"
+              alt="Classic (Newer)"></div>
+          <figcaption> <span class="loc">Classic (Newer)</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Classic%20%28newer%29.wmz"
+              target="_blank" rel="noopener" title="Classic (Newer) — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Claw_square.png?raw=true"
+              alt="Claw"></div>
+          <figcaption> <span class="loc">Claw</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/claw.wmz"
+              target="_blank" rel="noopener" title="Claw — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Colorchooser_square.png?raw=true"
+              alt="Colorchooser"></div>
+          <figcaption> <span class="loc">Colorchooser</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Colorchooser.wmz"
+              target="_blank" rel="noopener" title="Colorchooser — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Combat%20Flight%20Simulator%20Free_square.png?raw=true"
+              alt="Combat Flight Simulator 3"></div>
+          <figcaption> <span class="loc">Combat Flight Simulator 3</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Combat%20Flight%20Simulator%203.wmz"
+              target="_blank" rel="noopener" title="Combat Flight Simulator 3 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/compact_square.png?raw=true"
+              alt="Compact"></div>
+          <figcaption> <span class="loc">Compact</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/compact.wmz"
+              target="_blank" rel="noopener" title="Compact — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Constantine_square.png?raw=true"
+              alt="Constantine"></div>
+          <figcaption> <span class="loc">Constantine</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Constantine.wmz"
+              target="_blank" rel="noopener" title="Constantine — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Continum%20900SL_square.png?raw=true"
+              alt="Continuum 900SL"></div>
+          <figcaption> <span class="loc">Continuum 900SL</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Continuum_900SL.wmz"
+              target="_blank" rel="noopener" title="Continuum 900SL — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Corona_square.png?raw=true"
+              alt="Corona"></div>
+          <figcaption> <span class="loc">Corona</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/corona.wmz"
+              target="_blank" rel="noopener" title="Corona — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Creed_square.png?raw=true"
+              alt="Creed"></div>
+          <figcaption> <span class="loc">Creed</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Creed.wmz"
+              target="_blank" rel="noopener" title="Creed — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Crimson%20Skies_square.png?raw=true"
+              alt="Crimson Skies"></div>
+          <figcaption> <span class="loc">Crimson Skies</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Crimson_Skies.wmz"
+              target="_blank" rel="noopener" title="Crimson Skies — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Crystalball_square.png?raw=true"
+              alt="Crystalball"></div>
+          <figcaption> <span class="loc">Crystalball</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Crystalball.wmz"
+              target="_blank" rel="noopener" title="Crystalball — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/ctx2_square.png?raw=true"
+              alt="ctx2"></div>
+          <figcaption> <span class="loc">ctx2</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/ctx2.wmz"
+              target="_blank" rel="noopener" title="ctx2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Cubist_square.png?raw=true"
+              alt="Cubist"></div>
+          <figcaption> <span class="loc">Cubist</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Cubist.wmz"
+              target="_blank" rel="noopener" title="Cubist — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/cxt1_square.png?raw=true"
+              alt="cxt1"></div>
+          <figcaption> <span class="loc">cxt1</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/cxt1.wmz"
+              target="_blank" rel="noopener" title="cxt1 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/cyberchannel_square.png?raw=true"
+              alt="cyberchannel"></div>
+          <figcaption> <span class="loc">cyberchannel</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/cyberchannel.wmz"
+              target="_blank" rel="noopener" title="cyberchannel — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/DaftPlayer_square.png?raw=true"
+              alt="DaftPlayer"></div>
+          <figcaption> <span class="loc">Rainbow of Birds by Tracie Louise</span>
+            <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/DaftPlayer.wmz"
+              target="_blank" rel="noopener" title="DaftPlayer — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/DarkFusion_square.png?raw=true"
+              alt="DaRkFuSsIoOn"></div>
+          <figcaption> <span class="loc">DaRkFuSsIoOn</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/DaRkFuSsIoOn.wmz"
+              target="_blank" rel="noopener" title="DaRkFuSsIoOn — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Darkling_square.png?raw=true"
+              alt="Darkling"></div>
+          <figcaption> <span class="loc">Darkling</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Darkling.wmz"
+              target="_blank" rel="noopener" title="Darkling — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Deco_square.png?raw=true"
+              alt="Deco"></div>
+          <figcaption> <span class="loc">Deco</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Deco.wmz"
+              target="_blank" rel="noopener" title="Deco — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/DeepBlueSomething_square.png?raw=true"
+              alt="deepbluesomething"></div>
+          <figcaption> <span class="loc">deepbluesomething</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/deepbluesomething.wmz"
+              target="_blank" rel="noopener" title="deepbluesomething — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/DiamondRio_square.png?raw=true"
+              alt="Diamond Rio"></div>
+          <figcaption> <span class="loc">Diamond Rio</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Diamond_Rio.wmz"
+              target="_blank" rel="noopener" title="Diamond Rio — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/DigitalDJ_square.png?raw=true"
+              alt="DigitalDJ"></div>
+          <figcaption> <span class="loc">DigitalDJ</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/digitaldj.wmz"
+              target="_blank" rel="noopener" title="DigitalDJ — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Disney%20Mix_square.png?raw=true"
+              alt="Disney Mix Central"></div>
+          <figcaption> <span class="loc">Disney Mix Central</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Disney_Mix_Central.wmz"
+              target="_blank" rel="noopener" title="Disney Mix Central — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/The%20Doobie%20Brothers_square.png?raw=true"
+              alt="Doobie Brothers"></div>
+          <figcaption> <span class="loc">Doobie Brothers</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/The_Doobie_Brothers.wmz"
+              target="_blank" rel="noopener" title="Doobie Brothers — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Dreamcatcher_square.png?raw=true"
+              alt="Dreamcatcher"></div>
+          <figcaption> <span class="loc">Dreamcatcher</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Dreamcatcher.wmz"
+              target="_blank" rel="noopener" title="Dreamcatcher — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ducky_square.png?raw=true"
+              alt="Ducky"></div>
+          <figcaption> <span class="loc">Ducky</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ducky.wmz"
+              target="_blank" rel="noopener" title="Ducky — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Elvis_square.png?raw=true"
+              alt="elvis"></div>
+          <figcaption> <span class="loc">elvis</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/elvis.wmz"
+              target="_blank" rel="noopener" title="elvis — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Energy%20Blue_square.png?raw=true"
+              alt="Energy Blue"></div>
+          <figcaption> <span class="loc">Energy Blue</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Energy%20Blue.wmz"
+              target="_blank" rel="noopener" title="Energy Blue — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Erektorset_square.png?raw=true"
+              alt="Erektorset"></div>
+          <figcaption> <span class="loc">Erektorset</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Erektorset.wmz"
+              target="_blank" rel="noopener" title="Erektorset — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/figure8_square.png?raw=true"
+              alt="Figure8"></div>
+          <figcaption> <span class="loc">Figure8</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Figure8.wmz"
+              target="_blank" rel="noopener" title="Figure8 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Fishbowl_square.png?raw=true"
+              alt="Fishbowl"></div>
+          <figcaption> <span class="loc">Fishbowl</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Fishbowl.wmz"
+              target="_blank" rel="noopener" title="Fishbowl — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Frostbite_square.png?raw=true"
+              alt="Frostbite"></div>
+          <figcaption> <span class="loc">Frostbite</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Frostbite.wmz"
+              target="_blank" rel="noopener" title="Frostbite — Download this visualisation">Download
+              this visualisatio<span style="color: #123253;">n</span></a></figcaption><figcaption><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Gadget_square.png?raw=true"
+              alt="gadget"></div>
+          <figcaption> <span class="loc">gadget</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/gadget.wmz"
+              target="_blank" rel="noopener" title="gadget — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Gingerman_square.png?raw=true"
+              alt="Ginger Man"></div>
+          <figcaption> <span class="loc">Ginger Man</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ginger%20Man.wmz"
+              target="_blank" rel="noopener" title="Ginger Man (white buttons) — Download this visualisation">Download
+              this visualisation (white buttons)</a><br>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ginger_man.wmz"
+              title="Ginger Man (green buttons) — Download this visualisation">Download
+              this visualisation (green buttons)</a><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Gingerwoman_square.png?raw=true"
+              alt="Ginger Woman"></div>
+          <figcaption> <span class="loc">Ginger Woman</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ginger_woman.wmz"
+              target="_blank" rel="noopener" title="Ginger Woman — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Glow_square.png?raw=true"
+              alt="Glow"></div>
+          <figcaption> <span class="loc">Glow</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Glow.wmz"
+              target="_blank" rel="noopener" title="Glow — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <a href="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ailenware%20Teleport_square.png?raw=true"
+              title="Alienware Teleport"><img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Gnome_square.png?raw=true"
+                alt="gnome"></a></div>
+          <figcaption> <span class="loc">gnome</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/gnome.wmz"
+              target="_blank" rel="noopener" title="gnome — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Gold_square.png?raw=true"
+              alt="Gold"></div>
+          <figcaption> <span class="loc">Gold</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Gold.wmz"
+              target="_blank" rel="noopener" title="Gold — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Goo_square.png?raw=true"
+              alt="Goo"></div>
+          <figcaption> <span class="loc">Goo</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Goo.wmz"
+              target="_blank" rel="noopener" title="Goo — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Gorillaz_square.png?raw=true"
+              alt="Gorillaz"></div>
+          <figcaption> <span class="loc">Gorillaz</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Gorillaz.wmz"
+              target="_blank" rel="noopener" title="Gorillaz — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Grinch_square.png?raw=true"
+              alt="Grinch"></div>
+          <figcaption> <span class="loc">Grinch</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Grinch.wmz"
+              target="_blank" rel="noopener" title="Grinch — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Gyrosphere_square.png?raw=true"
+              alt="Gyrosphere"></div>
+          <figcaption> <span class="loc">Gyrosphere</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Gyrosphere.wmz"
+              target="_blank" rel="noopener" title="Gyrosphere — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Half%20Life%202_square.png?raw=true"
+              alt="Half-Life 2"></div>
+          <figcaption> <span class="loc">Half-Life 2</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Half-Life_2.wmz"
+              target="_blank" rel="noopener" title="Half-Life 2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Halloween_square.png?raw=true"
+              alt="Halloween"></div>
+          <figcaption> <span class="loc">Halloween</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Halloween.wmz"
+              target="_blank" rel="noopener" title="Halloween — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Halo%202_square.png?raw=true"
+              alt="Halo 2"></div>
+          <figcaption> <span class="loc">Halo 2</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Halo%202.wmz"
+              target="_blank" rel="noopener" title="Halo 2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Harry%20Potter%20CS_square.png?raw=true"
+              alt="Harry Potter and the Chamber of Secrets"></div>
+          <figcaption> <span class="loc">Harry Potter and the Chamber of
+              Secrets</span> <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Harry_Potter_and_the_Chamber_of_Secrets.wmz"
+              target="_blank" rel="noopener" title="Harry Potter and the Chamber of Secrets — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Headspace_square.png?raw=true"
+              alt="Headspace"></div>
+          <figcaption> <span class="loc">Headspace</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Headspace.wmz"
+              target="_blank" rel="noopener" title="Headspace — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Headspace%20Beta_square.png?raw=true"
+              alt="Headspace (Beta)"></div>
+          <figcaption> <span class="loc">Headspace (Beta)</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/headspace%20beta.wmz"
+              target="_blank" rel="noopener" title="Headspace (Beta) - Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Heart_square.png?raw=true"
+              alt="heart"></div>
+          <figcaption> <span class="loc">heart</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/heart.wmz"
+              target="_blank" rel="noopener" title="heart — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Heart%20Butterfly_square.png?raw=true"
+              alt="Heart Butterfly"></div>
+          <figcaption> <span class="loc">Heart Butterfly</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Heart_Butterfly.wmz"
+              target="_blank" rel="noopener" title="Heart Butterfly — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/hob_square.png?raw=true"
+              alt="HOB"></div>
+          <figcaption> <span class="loc">HOB</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/HOB.wmz"
+              target="_blank" rel="noopener" title="HOB — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ice_square.png?raw=true"
+              alt="Ice"></div>
+          <figcaption> <span class="loc">Ice</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ice.wmz"
+              target="_blank" rel="noopener" title="Ice — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Iconic_square.png?raw=true"
+              alt="iconic"></div>
+          <figcaption> <span class="loc">iconic</span> <span class="region">Visualisations</span>
+          </figcaption><figcaption><span class="region"></span><a href="https://archive.org/download/windows-media-player-visualisations_202610/iconic.wmz"
+              target="_blank" rel="noopener" title="iconic — Download this visualisation">Download
+              this visualisation</a></figcaption><figcaption></figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/ilo_square.png?raw=true"
+              alt="ILO"></div>
+          <figcaption> <span class="loc">ILO</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/ILO.wmz"
+              target="_blank" rel="noopener" title="ILO — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/imusica_square.png?raw=true"
+              alt="iMusica"></div>
+          <figcaption> <span class="loc">iMusica</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/iMusica.wmz"
+              target="_blank" rel="noopener" title="iMusica — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Israeli_square.png?raw=true"
+              alt="Israeli"></div>
+          <figcaption> <span class="loc">Israeli</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Israeli.wmz"
+              target="_blank" rel="noopener" title="Israeli — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/It%27s%20a%20magical%20world_square.png?raw=true"
+              alt="It's a Magical World"></div>
+          <figcaption> <span class="loc">It's a Magical World</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/It%27s%20a%20Magical%20World.wmz"
+              target="_blank" rel="noopener" title="It's a Magical World - Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Jaws_square.png?raw=true"
+              alt="JAWS"></div>
+          <figcaption> <span class="loc">JAWS</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Jaws.wmz"
+              target="_blank" rel="noopener" title="JAWS - Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Jewel_square.png?raw=true"
+              alt="Jewel"></div>
+          <figcaption> <span class="loc">Jewel</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Jewel.wmz"
+              target="_blank" rel="noopener" title="Jewel — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Josie%20and%20the%20Pussycats_square.png?raw=true"
+              alt="Josie and the Pussycats"></div>
+          <figcaption> <span class="loc">Josie and the Pussycats</span> <span
+              class="region">Visualisations</span> <a href="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Josie%20and%20the%20Pussycats_square.png?raw=true"
+              target="_blank" rel="noopener" title="Josie and the Pussycats — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/kakuto_square.png?raw=true"
+              alt="Kakuto Chojin"></div>
+          <figcaption> <span class="loc">Kakuto Chojin</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Kakuto%20Chojin.wmz"
+              target="_blank" rel="noopener" title="Kakuto Chojin — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/kenwood_square.png?raw=true"
+              alt="Kenwood KDC-X959"></div>
+          <figcaption> <span class="loc">Kenwood KDC-X959</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Kenwood_MP7.wmz"
+              target="_blank" rel="noopener" title="Kenwood KDC-X959 (MP7) — Download this visualisation">Download
+              this visualisation (MP7)</a></figcaption><figcaption><a href="https://archive.org/download/windows-media-player-visualisations_202610/Kenwood_MPXP.wmz"
+              target="_blank" rel="noopener" title="Kenwood KDC-X959 (MP8) — Download this visualisation">Download
+              this visualisation (MP8)<span style="color: #123253;"></span></a><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Kids_square.png?raw=true"
+              alt="Kids"></div>
+          <figcaption> <span class="loc">Kids</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Kids.wmz"
+              target="_blank" rel="noopener" title="Kids — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Kung%20Fu%20Chaos_square.png?raw=true"
+              alt="Kung Fu Chaos"></div>
+          <figcaption> <span class="loc">Kung Fu Chaos</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/KungFuChaos.wmz"
+              target="_blank" rel="noopener" title="Kung Fu Chaos — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Livin%20it_square.png?raw=true"
+              alt="Livin' It Skate"></div>
+          <figcaption> <span class="loc">Livin' It Skate</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/livin_it_skate.wmz"
+              target="_blank" rel="noopener" title="Livin' It Skate — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Lost%20Planet_square.png?raw=true"
+              alt="Lost Planet"></div>
+          <figcaption> <span class="loc">Lost Planet</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/LostPlanet.wmz"
+              target="_blank" rel="noopener" title="Lost Planet — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/LOTR_square.png?raw=true"
+              alt="Lord of the Rights: The Battle for Middle Earth"></div>
+          <figcaption> <span class="loc">Lord of the Rights: The Battle for
+              Middle Earth</span> <span class="region">Visualisations</span> <a
+              href="https://archive.org/download/windows-media-player-visualisations_202610/LotR.wmz"
+              target="_blank" rel="noopener" title="Lord of the Rights: The Battle for Middle Earth — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Lumniesence_square.png?raw=true"
+              alt="Luminescence"></div>
+          <figcaption> <span class="loc">Luminesence</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Luminescence.wmz"
+              target="_blank" rel="noopener" title="Luminescence — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Main%20Street_square.png?raw=true"
+              alt="Main Street"></div>
+          <figcaption> <span class="loc">Main Street</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Main_Street.wmz"
+              target="_blank" rel="noopener" title="Main Street — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Major%20League%20Baseball_square.png?raw=true"
+              alt="Major League Baseball"></div>
+          <figcaption> <span class="loc">Major League Baseball</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Major%20League%20Basebal%20XP.wmz"
+              target="_blank" rel="noopener" title="Major League Baseball — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Mandalay_square.png?raw=true"
+              alt="Mandalay"></div>
+          <figcaption> <span class="loc">Mandalay</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Mandalay.wmz"
+              target="_blank" rel="noopener" title="Mandalay — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Mecha_square.png?raw=true"
+              alt="Mecha"></div>
+          <figcaption> <span class="loc">Mecha</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Mecha.wmz"
+              target="_blank" rel="noopener" title="Mecha — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Mech%20Assault%20Deluxe_square.png?raw=true"
+              alt="MechAssault Deluxe"></div>
+          <figcaption> <span class="loc">MechAssault Deluxe</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/MechAssault%20Deluxe.wmz"
+              target="_blank" rel="noopener" title="MechAssault Deluxe — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/medal%20of%20honor_square.png?raw=true"
+              alt="Medal of Honor: Airborne"></div>
+          <figcaption> <span class="loc">Medal of Honor: Airborne</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Medal%20of%20Honor%20Airborne.wmz"
+              target="_blank" rel="noopener" title="Medal of Honor: Airborne — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Media%20Player%20Classic%20Compact%205_square.png?raw=true"
+              alt="Media Player Classic Compact 5"></div>
+          <figcaption> <span class="loc">Media Player Classic Compact 5</span>
+            <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/MediaPlayerClassicCompact-5.wmz"
+              target="_blank" rel="noopener" title="Media Player Classic Compact 5 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Melvin_square.png?raw=true"
+              alt="Melvin"></div>
+          <figcaption> <span class="loc">Melvin</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Melvin.wmz"
+              target="_blank" rel="noopener" title="Melvin - Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Metro_square.png?raw=true"
+              alt="Metro"></div>
+          <figcaption> <span class="loc">Metro</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Metro.wmz"
+              target="_blank" rel="noopener" title="Metro — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Mickey_square.png?raw=true"
+              alt="MICKEY"></div>
+          <figcaption> <span class="loc">MICKEY</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/MICKEY.wmz"
+              target="_blank" rel="noopener" title="MICKEY — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Holiday%20Skin_square.png?raw=true"
+              alt="Microsoft Holiday 2001"></div>
+          <figcaption> <span class="loc">Microsoft Holiday 2001</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/holiday_skin.wmz"
+              target="_blank" rel="noopener" title="Microsoft Holiday 2001 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Military_square.png?raw=true"
+              alt="Military"></div>
+          <figcaption> <span class="loc">Military</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Military.wmz"
+              target="_blank" rel="noopener" title="Military — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Miniplayer%20Me%20Miniplayer_square.png?raw=true"
+              alt="Miniplayer"></div>
+          <figcaption> <span class="loc">Miniplayer</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Miniplayer.wmz"
+              target="_blank" rel="noopener" title="Miniplayer (MP6) — Download this visualisation">Download
+              this visualisation (MP6)</a></figcaption><figcaption><span class="region"></span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Miniplayer%20me.wmz"
+              target="_blank" rel="noopener" title="Miniplayer (MP7) — Download this visualisation">Download
+              this visualisation (MP7)</a></figcaption><figcaption><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Modern%20Blue_square.png?raw=true"
+              alt="modernblue"></div>
+          <figcaption> <span class="loc">modernblue</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/modernblue.wmz"
+              target="_blank" rel="noopener" title="modernblue — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/MSN_square.png?raw=true"
+              alt="MSN"></div>
+          <figcaption> <span class="loc">MSN</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/MSN.wmz"
+              target="_blank" rel="noopener" title="MSN — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/My%20Halloween_square.png?raw=true"
+              alt="My Halloween WMP"></div>
+          <figcaption> <span class="loc">My Halloween WMP</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/my_halloween_wmp.wmz"
+              target="_blank" rel="noopener" title="My Halloween WMP — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Nautical_square.png?raw=true"
+              alt="Nautical"></div>
+          <figcaption> <span class="loc">Nautical</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Nautical.wmz"
+              target="_blank" rel="noopener" title="Nautical — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Navigator_square.png?raw=true"
+              alt="Navigator"></div>
+          <figcaption> <span class="loc">Navigator</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Navigator.wmz"
+              target="_blank" rel="noopener" title="Navigator — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Need%20for%20Speed%20Underground_square.png?raw=true"
+              alt="Need for Speed Underground"></div>
+          <figcaption> <span class="loc">Need for Speed Underground</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Need_for_Speed_Underground.wmz"
+              target="_blank" rel="noopener" title="Need for Speed Underground — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/New%20Onkyo%20Skin_square.png?raw=true"
+              alt="New ONKYO"></div>
+          <figcaption> <span class="loc">New ONKYO</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/New%20Onkyo.wmz"
+              target="_blank" rel="noopener" title="New ONKYO — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/New%20Super%20Mario%20Bros_square.png?raw=true"
+              alt="New Super Mario Bros."></div>
+          <figcaption> <span class="loc">New Super Mario Bros.&nbsp;</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/New%20Super%20Mario%20Bros.wmz"
+              target="_blank" rel="noopener" title="New Super Mario Bros. — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/New%20York%20Yankees_square.png?raw=true"
+              alt="New York Yankees"></div>
+          <figcaption> <span class="loc">New York Yankees</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/New%20York%20Yankees%20XP.wmz"
+              target="_blank" rel="noopener" title="New York Yankees — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Nexus%203_square.png?raw=true"
+              alt="Nexus3"></div>
+          <figcaption> <span class="loc">Nexus3</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Nexus3.wmz"
+              target="_blank" rel="noopener" title="Nexus3 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/NPR_square.png?raw=true"
+              alt="NPR"></div>
+          <figcaption> <span class="loc">NPR</span> <span class="region">Visualisations</span>
+            <a href="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/NPR_square.png?raw=true"
+              target="_blank" rel="noopener" title="NPR — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/nvidia_square.png?raw=true"
+              alt="NVIDIA"></div>
+          <figcaption> <span class="loc">NVIDIA</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/NVIDIA.wmz"
+              target="_blank" rel="noopener" title="NVIDIA — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ocean_square.png?raw=true"
+              alt="Ocean"></div>
+          <figcaption> <span class="loc">Ocean</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ocean.wmz"
+              target="_blank" rel="noopener" title="Ocean — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Official%20Xbox_square.png?raw=true"
+              alt="Official Xbox Skin for Windows Media Player"></div>
+          <figcaption> <span class="loc">Official Xbox Skin for Windows Media
+              Player</span> <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Official_Xbox_MP71.wmz"
+              target="_blank" rel="noopener" title="Official Xbox Skin for Windows Media Player (MP7) — Download this visualisation">Download
+              this visualisation (MP7)</a><br>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Official_Xbox_XP.wmz"
+              target="_blank" rel="noopener" title="Official Xbox Skin for Windows Media Player (MP8) — Download this visualisation">Download
+              this visualisation (MP8)</a> <br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Optik_square.png?raw=true"
+              alt="Optik"></div>
+          <figcaption> <span class="loc">Optik</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Optik.wmz"
+              target="_blank" rel="noopener" title="Optik — Download this visualisation">Download
+              this visualisation</a></figcaption><figcaption><span class="region"></span>
+          </figcaption><figcaption><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Orion_square.png?raw=true"
+              alt="Orion"></div>
+          <figcaption> <span class="loc">Orion</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Orion.wmz"
+              target="_blank" rel="noopener" title="Orion — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Ovoid_square.png?raw=true"
+              alt="Ovoid"></div>
+          <figcaption> <span class="loc">Ovoid</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ovoid.wmz"
+              target="_blank" rel="noopener" title="Ovoid — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Personal_square.png?raw=true"
+              alt="Personal"></div>
+          <figcaption> <span class="loc">personal</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/personal.wmz"
+              target="_blank" rel="noopener" title="Personal — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Pharaoh_square.png?raw=true"
+              alt="pharaoh"></div>
+          <figcaption> <span class="loc">pharaoh</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/pharaoh.wmz"
+              target="_blank" rel="noopener" title="pharaoh — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Pioneer_square.png?raw=true"
+              alt="Pioneer AVIC-N3"></div>
+          <figcaption> <span class="loc">Pioneer AVIC-N3</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Pioneer%20AVIC-N3.wmz"
+              target="_blank" rel="noopener" title="Pioneer AVIC-N3 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Aq_square.png?raw=true"
+              alt="Plus! Aquarium"></div>
+          <figcaption> <span class="loc">Plus! Aquarium</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Aquarium.wmz"
+              target="_blank" rel="noopener" title="Plus! Aquarium — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Bi%20Dot_square.png?raw=true"
+              alt="Plus! The Bionic Dot"></div>
+          <figcaption> <span class="loc">Plus! The Bionic Dot (Blue)</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21_The_Bionic_Dot.wmz"
+              target="_blank" rel="noopener" title="Plus! The Bionic Dot — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Bi_square.png?raw=true"
+              alt="Plus! The Bionic Dot (Black)"></div>
+          <figcaption> <span class="loc">Plus! The Bionic Dot (Black)</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Bionic%20Dot.wmz"
+              target="_blank" rel="noopener" title="Plus! The Bionic Dot — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Davinci_square.png?raw=true"
+              alt="Plus! da Vinci"></div>
+          <figcaption> <span class="loc">Plus! da Vinci</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20da%20Vinci.wmz"
+              target="_blank" rel="noopener" title="Plus! da Vinci — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Hard_square.png?raw=true"
+              alt="Plus! Hard Boiled"></div>
+          <figcaption> <span class="loc">Plus! Hard Boiled&nbsp;</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Hard%20Boiled.wmz"
+              target="_blank" rel="noopener" title="Plus! Hard Boiled — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Hue_square.png?raw=true"
+              alt="Plus! Hue Shifter"></div>
+          <figcaption> <span class="loc">Plus! Hue Shifter</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20HueShifter.wmz"
+              target="_blank" rel="noopener" title="Plus! Hue Shifter — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Mecha_square.png?raw=true"
+              alt="Plus! Mecha"></div>
+          <figcaption> <span class="loc">Plus! Mecha</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Mecha.wmz"
+              target="_blank" rel="noopener" title="Plus! Mecha — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Nature_square.png?raw=true"
+              alt="Plus! Nature"></div>
+          <figcaption> <span class="loc">Plus! Nature</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Nature.wmz"
+              target="_blank" rel="noopener" title="Plus! Nature — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Plasma_square.png?raw=true"
+              alt="Plus! Plasma Ball"></div>
+          <figcaption> <span class="loc">Plus! Plasma Ball</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Plasma%20Ball.wmz"
+              target="_blank" rel="noopener" title="Plus! Plasma Ball — Download this visualisation">Download
+              this visualisation</a><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Professional_square.png?raw=true"
+              alt="Plus! Professional"></div>
+          <figcaption> </figcaption><figcaption><span class="loc">Plus!
+              Professional</span> <span class="region">Visualisations</span> <a
+              href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Pulsar.wmz"
+              target="_blank" rel="noopener" title="Plus! Professional — Download this visualisation">Download
+              this visualisation</a></figcaption><figcaption><span class="region"></span></figcaption><figcaption><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Pulsar_square.png?raw=true"
+              alt="Plus! Pulsar"></div>
+          <figcaption> <span class="loc">Plus! Pulsar</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Pulsar.wmz"
+              target="_blank" rel="noopener" title="Plus! Pulsar — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Slimline_square.png?raw=true"
+              alt="Plus! SlimLine"></div>
+          <figcaption> <span class="loc">Plus! SlimLine</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20SlimLine.wmz"
+              target="_blank" rel="noopener" title="Plus! SlimLine — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Plus%20Space_square.png?raw=true"
+              alt="Plus! Space"></div>
+          <figcaption> <span class="loc">Plus! Space</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Plus%21%20Space.wmz"
+              target="_blank" rel="noopener" title="Plus! Space — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Polygon_square.png?raw=true"
+              alt="polygon"></div>
+          <figcaption> <span class="loc">polygon</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/polygon.wmz"
+              target="_blank" rel="noopener" title="polygon — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Portals_square.png?raw=true"
+              alt="Portals"></div>
+          <figcaption> <span class="loc">Portals</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/portals.wmz"
+              target="_blank" rel="noopener" title="Portals — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/PowerToys_square.png?raw=true"
+              alt="PowerToys"></div>
+          <figcaption> <span class="loc">PowerToys</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/PowerToys.wmz"
+              target="_blank" rel="noopener" title="PowerToys — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Press%20The%20Green%20Button_square.png?raw=true"
+              alt="Press the Green Button"></div>
+          <figcaption> <span class="loc">Press the Green Button</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/PresstheGreenButton.wmz"
+              target="_blank" rel="noopener" title="Press the Green Button — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Professional_square.png?raw=true"
+              alt="professional"></div>
+          <figcaption> <span class="loc">professional</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/professional.wmz"
+              target="_blank" rel="noopener" title="professional — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/PGR2_square.png?raw=true"
+              alt="Project Gotham Racing 2"></div>
+          <figcaption> <span class="loc">Project Gotham Racing 2</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Project%20Gotham%20Racing%202.wmz"
+              target="_blank" rel="noopener" title="Project Gotham Racing 2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/PGR2%201_square.png?raw=true"
+              alt="Project Gotham Racing 2"></div>
+          <figcaption> <span class="loc">Project Gotham Racing 2</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Project%20Gotham%20Racing%202%20%281%29.wmz"
+              target="_blank" rel="noopener" title="Project Gotham Racing 2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Protozoa_square.png?raw=true"
+              alt="Protozoa"></div>
+          <figcaption> <span class="loc">Protozoa</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/protozoa.wmz"
+              target="_blank" rel="noopener" title="Protozoa — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Pulsar_square.png?raw=true"
+              alt="Pulsar"></div>
+          <figcaption> <span class="loc">Pulsar</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Pulsar.wmz"
+              target="_blank" rel="noopener" title="Pulsar — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/pyrite_square.png?raw=true"
+              alt="pyrite"></div>
+          <figcaption> <span class="loc">pyrite</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/pyrite.wmz"
+              target="_blank" rel="noopener" title="pyrite — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Quantum%20Redshift_square.png?raw=true"
+              alt="Quantum Redshift"></div>
+          <figcaption> <span class="loc">Quantum Redshift</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/QuantumRedshiftWMPSkin.wmz"
+              target="_blank" rel="noopener" title="Quantum Redshift - Download this visualisation">Download
+              this visualisation</a> <br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Quicksilver_square.png?raw=true"
+              alt="Quicksilver"></div>
+          <figcaption> <span class="loc">Quicksilver</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/QuickSilver.wmz"
+              target="_blank" rel="noopener" title="Quicksilver — Download this visualisation">Download
+              this visualisation</a></figcaption><figcaption></figcaption><figcaption><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Quicksilver_square.png?raw=true"
+              alt="Quicksilver"></div>
+          <figcaption> <span class="loc">Quicksilver</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/QuickSilver%20%282%29.wmz"
+              target="_blank" rel="noopener" title="Quicksilver — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Rad_square.png?raw=true"
+              alt="Robotic Armature Device"></div>
+          <figcaption> <span class="loc">Robotic Armature Device</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/rad.wmz"
+              target="_blank" rel="noopener" title="Robotic Armature Device — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Radial_square.png?raw=true"
+              alt="Radial"></div>
+          <figcaption> <span class="loc">Radial</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Radial.wmz"
+              target="_blank" rel="noopener" title="Radial — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Radio_square.png?raw=true"
+              alt="Radio"></div>
+          <figcaption> <span class="loc">Radio</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Radio.wmz"
+              target="_blank" rel="noopener" title="Radio — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Raptor_square.png?raw=true"
+              alt="Raptor"></div>
+          <figcaption> <span class="loc">Raptor</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Raptor.wmz"
+              target="_blank" rel="noopener" title="Raptor — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Rave%20MP_square.png?raw=true"
+              alt="Rave-MP"></div>
+          <figcaption> <span class="loc">Rave-MP</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Rave-MP.wmz"
+              target="_blank" rel="noopener" title="Rave-MP — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Raveworld%20.net_square.png?raw=true"
+              alt="Raveworld.net"></div>
+          <figcaption> <span class="loc">Raveworld.net</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/raveworld.wmz"
+              target="_blank" rel="noopener" title="Raveworld.net — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Revert_square.png?raw=true"
+              alt="Revert"></div>
+          <figcaption> <span class="loc">Revert</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Revert.wmz"
+              target="_blank" rel="noopener" title="Revert — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Revert%20Beta_square.png?raw=true"
+              alt="Revert (Beta)"></div>
+          <figcaption> <span class="loc">Revert (Beta)</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Revert%20Beta.wmz"
+              target="_blank" rel="noopener" title="Revert (beta) — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Robbie_square.png?raw=true"
+              alt="robbie"></div>
+          <figcaption><span class="loc">robbie</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/robbie.wmz"
+              target="_blank" rel="noopener" title="robbie — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/RCT3_square.png?raw=true"
+              alt="Roller Coaster Tycoon 3"></div>
+          <figcaption><span class="loc">Roller Coaster Tycoon 3</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/RCT3.wmz"
+              target="_blank" rel="noopener" title="Roller Coaster Tycoon 3 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Roundlet_square.png?raw=true"
+              alt="Roundlet"></div>
+          <figcaption> <span class="loc">Roundlet</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Roundlet.wmz"
+              target="_blank" rel="noopener" title="Roundlet — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Roundlet%20Beta_square.png?raw=true"
+              alt="Roundlet (Beta)"></div>
+          <figcaption> <span class="loc">Roundlet (Beta)</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/roundlet%20beta.wmz"
+              target="_blank" rel="noopener" title="Roundlet (Beta) — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Rusty_square.png?raw=true"
+              alt="Rusty"></div>
+          <figcaption> <span class="loc">Rusty</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Rusty.wmz"
+              target="_blank" rel="noopener" title="Rusty — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Science_square.png?raw=true"
+              alt="Science"></div>
+          <figcaption> <span class="loc">Science</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Science.wmz"
+              target="_blank" rel="noopener" title="Science — Download this visualisation">Download
+              this visualisation</a> <br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Scooby%20Doo%202_square.png?raw=true"
+              alt="Scooby Doo 2"></div>
+          <figcaption> <span class="loc">Scooby Doo 2</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Scooby-Doo_2.wmz"
+              target="_blank" rel="noopener" title="Scooby Doo 2 — Download this visualisation">Download
+              this visualisation</a></figcaption><figcaption></figcaption><figcaption><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Secura_square.png?raw=true"
+              alt="Secura"></div>
+          <figcaption> <span class="loc">Secura</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Secura.wmz"
+              target="_blank" rel="noopener" title="Secura — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Slimline_square.png?raw=true"
+              alt="SlimLine"></div>
+          <figcaption> <span class="loc">SlimLine</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/SlimLine.wmz"
+              target="_blank" rel="noopener" title="SlimLine — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Sony%20Ericsson_square.png?raw=true"
+              alt="Sony Ericsson"></div>
+          <figcaption> <span class="loc">Sony Ericsson</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Sony%20Ericsson.wmz"
+              target="_blank" rel="noopener" title="Sony Ericsson — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/space_square.png?raw=true"
+              alt="Space"></div>
+          <figcaption> <span class="loc">Space</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Space.wmz"
+              target="_blank" rel="noopener" title="Space — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Spiderman_square.png?raw=true"
+              alt="Spider-Man"></div>
+          <figcaption> <span class="loc">Spider-Man</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Spider-man.wmz"
+              target="_blank" rel="noopener" title="Spider-Man — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Splat_square.png?raw=true"
+              alt="splat"></div>
+          <figcaption> <span class="loc">splat</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/splat.wmz"
+              target="_blank" rel="noopener" title="splat — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Sports_square.png?raw=true"
+              alt="Sports"></div>
+          <figcaption> <span class="loc">Sports</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Sports.wmz"
+              target="_blank" rel="noopener" title="Sports — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Springflower_square.png?raw=true"
+              alt="springflower"></div>
+          <figcaption> <span class="loc">springflower</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/springflower.wmz"
+              target="_blank" rel="noopener" title="springflower — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Stalker_square.png?raw=true"
+              alt="S.T.A.L.K.E.R"></div>
+          <figcaption> <span class="loc">S.T.A.L.K.E.R</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/STALKER.wmz"
+              target="_blank" rel="noopener" title="S.T.A.L.K.E.R — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Stargate_square.png?raw=true"
+              alt="stargate"></div>
+          <figcaption><span class="loc">stargate</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/stargate.wmz"
+              target="_blank" rel="noopener" title="stargate — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Stars%20and%20Stripes_square.png?raw=true"
+              alt="Stars and Stripes"></div>
+          <figcaption><span class="loc">Stars and Stripes</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Stars%20and%20Stripes.wmz"
+              target="_blank" rel="noopener" title="Stars and Stripes — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Stealth_square.png?raw=true"
+              alt="Stealth"></div>
+          <figcaption> <span class="loc">Stealth</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Stealth.wmz"
+              target="_blank" rel="noopener" title="Stealth — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Steelix_square.png?raw=true"
+              alt="Steelix"></div>
+          <figcaption> <span class="loc">Steelix</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Steelix.wmz"
+              target="_blank" rel="noopener" title="Steelix — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/StellarHub_square.png?raw=true"
+              alt="StellarHub"></div>
+          <figcaption> <span class="loc">StellarHub</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/StellarHub.wmz"
+              target="_blank" rel="noopener" title="StellarHub — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/T3%20Skynet_square.png?raw=true"
+              alt="T3 Skynet Media Player"></div>
+          <figcaption> <span class="loc">T3 Skynet Media Player</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/T3-Skynet_Media_Player.wmz"
+              target="_blank" rel="noopener" title="T3 Skynet Media Player — Download this visualisation">Download
+              this visualisation</a> <br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/TDK_square.png?raw=true"
+              alt="TDK Digital MixMaster"></div>
+          <figcaption> <span class="loc">TDK Digital MixMaster</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/TDK.wmz"
+              target="_blank" rel="noopener" title="TDK Digital MixMaster — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Television_square.png?raw=true"
+              alt="Television"></div>
+          <figcaption> <span class="loc">Television</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Television.wmz"
+              target="_blank" rel="noopener" title="Television— Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Transformers.png?raw=true"
+              alt="Transformers Skin:Protect"></div>
+          <figcaption> <span class="loc">Transformers Skin:Protect</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/tfreooo.wmz"
+              target="_blank" rel="noopener" title="Transformers Skin:Protect — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/The%20Sentinel_square.png?raw=true"
+              alt="The Sentinel"></div>
+          <figcaption> <span class="loc">The Sentinel</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/The%20Sentinel.wmz"
+              target="_blank" rel="noopener" title="The Sentinel — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/The%20Unit_square.png?raw=true"
+              alt="The Unit"></div>
+          <figcaption> <span class="loc">The Unit</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/The%20Unit.wmz"
+              target="_blank" rel="noopener" title="The Unit — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Thomas_square.png?raw=true"
+              alt="Thomas"></div>
+          <figcaption> <span class="loc">Thomas</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Thomas.wmz"
+              target="_blank" rel="noopener" title="Thomas — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Splinter%20cell_square.png?raw=true"
+              alt="Tom Clancy's Splinter Cell"></div>
+          <figcaption> <span class="loc">Tom Clancy's Splinter Cell</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/SplinterCellWMPSkin.wmz"
+              target="_blank" rel="noopener" title="Tom Clancy's Splinter Cell — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Tomb%20Raider%202_square.png?raw=true"
+              alt="Tomb Raider 2"></div>
+          <figcaption> <span class="loc">Tomb Raider 2</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Tomb%20Raider%202.wmz"
+              target="_blank" rel="noopener" title="Tomb Raider 2 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toothy_square.png?raw=true"
+              alt="Toothy"></div>
+          <figcaption> <span class="loc">Toothy</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toothy.wmz"
+              target="_blank" rel="noopener" title="Toothy — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toshiba%20Chrome_square.png?raw=true"
+              alt="Toshiba Chrome"></div>
+          <figcaption><span class="loc">Toshiba Chrome</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toshiba%20Chrome.wmz"
+              target="_blank" rel="noopener" title="Toshiba Chrome — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toshiba%20Hardware_square.png?raw=true"
+              alt="Toshiba Hardware"></div>
+          <figcaption><span class="loc">Toshiba Hardware</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toshiba%20Hardware.wmz"
+              target="_blank" rel="noopener" title="Toshiba Hardware — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toshiba%20Left%20Edge_square.png?raw=true"
+              alt="Toshiba Left Edge"></div>
+          <figcaption> <span class="loc">Toshiba Left Edge</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toshiba%20Left%20Edge.wmz"
+              target="_blank" rel="noopener" title="Toshiba Left Edge — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toshiba%20Satellite_square.png?raw=true"
+              alt="Toshiba Satellite"></div>
+          <figcaption> <span class="loc">Toshiba Satellite</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toshiba%20Satellite.wmz"
+              target="_blank" rel="noopener" title="Toshiba Satellite — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toshiba%20Stack_square.png?raw=true"
+              alt="Toshiba Stack"></div>
+          <figcaption> <span class="loc">Toshiba Stack</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toshiba%20Stack.wmz"
+              target="_blank" rel="noopener" title="Toshiba Stack — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toshiba%20Titlebar_square.png?raw=true"
+              alt="Toshiba TitleBar"></div>
+          <figcaption> <span class="loc">Toshiba TitleBar</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toshiba%20TitleBar.wmz"
+              target="_blank" rel="noopener" title="Toshiba TitleBar — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Toshiba%20Titlebar%20with%20Names_square.png?raw=true"
+              alt="Toshiba TitleBar (with Song Names)"></div>
+          <figcaption> <span class="loc">Toshiba TitleBar (with Song Names)</span>
+            <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Toshiba%20TitleBar%20with%20song%20names.wmz"
+              target="_blank" rel="noopener" title="Toshiba TitleBar (with Song Names) — Download this visualisation">Download
+              this visualisation</a> <br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/TripleX_square.png?raw=true"
+              alt="TripleX"></div>
+          <figcaption> <span class="loc">TripleX</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/TripleX%20for%207.1.wmz"
+              target="_blank" rel="noopener" title="TripleX (MP7) — Download this visualisation">Download
+              this visualisation (MP7)</a><br>
+            <span style="color: #154f8f;"></span><a href="https://archive.org/download/windows-media-player-visualisations_202610/TripleX%20for%20XP.wmz"
+              target="_blank" rel="noopener" title="TripleX (MP8) — Download this visualisation">Download
+              this visualisation (MP8)</a><br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Tubeframe_square.png?raw=true"
+              alt="Tube Frame"></div>
+          <figcaption> <span class="loc">Tube Frame</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/tubeframe.wmz"
+              target="_blank" rel="noopener" title="Tube Frame — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/ursula_square.png?raw=true"
+              alt="Ursula"></div>
+          <figcaption> <span class="loc">Ursula</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Ursula.wmz"
+              target="_blank" rel="noopener" title="Ursula — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/US%20Air%20Force_square.png?raw=true"
+              alt="US Air Force"></div>
+          <figcaption> <span class="loc">U.S. Air Force</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/US%20Air%20Force.wmz"
+              target="_blank" rel="noopener" title="U.S. Air Force — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/US%20Army_square.png?raw=true"
+              alt="U.S. Army"></div>
+          <figcaption> <span class="loc">U.S. Army</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/US%20Army.wmz"
+              target="_blank" rel="noopener" title="U.S. Army — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/US%20Coastguard_square.png?raw=true"
+              alt="U.S. Coast Guard"></div>
+          <figcaption> <span class="loc">U.S. Coast Guard</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/US%20Coast%20Guard.wmz"
+              target="_blank" rel="noopener" title="U.S. Coast Guard — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/US%20Marine%20Corps_square.png?raw=true"
+              alt="U.S. Marine Corps"></div>
+          <figcaption> <span class="loc">U.S. Marine Corps</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/US%20Marine%20Corps.wmz"
+              target="_blank" rel="noopener" title="U.S. Marine Corps — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/US%20Navy_square.png?raw=true"
+              alt="U.S. Navy"></div>
+          <figcaption> <span class="loc">U.S. Navy</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/US%20Navy.wmz"
+              target="_blank" rel="noopener" title="U.S. Navy — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Utomjording_square.png?raw=true"
+              alt="Utomjording"></div>
+          <figcaption> <span class="loc">Utomjording</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Utomjording.wmz"
+              target="_blank" rel="noopener" title="Utomjording — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/V2%20Underworld_square.png?raw=true"
+              alt="Underworld"></div>
+          <figcaption><span class="loc">Underworld</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/v2_underworld.wmz"
+              target="_blank" rel="noopener" title="Underworld — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Vario_square.png?raw=true"
+              alt="Vario"></div>
+          <figcaption><span class="loc">Vario</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Vario.wmz"
+              target="_blank" rel="noopener" title="Vario — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Vintage_square.png?raw=true"
+              alt="Vintage"></div>
+          <figcaption> <span class="loc">Vintage</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Vintage.wmz"
+              target="_blank" rel="noopener" title="Vintage — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/WALL%20E_square.png?raw=true"
+              alt="WALL-E"></div>
+          <figcaption> <span class="loc">WALL-E</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/WALL-E.wmz"
+              target="_blank" rel="noopener" title="WALL-E — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Windows%20Classic_square.png?raw=true"
+              alt="Windows Classic"></div>
+          <figcaption> <span class="loc">Windows Classic</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Windows%20Classic.wmz"
+              target="_blank" rel="noopener" title="Windows Classic — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Windows%20ME_square.png?raw=true"
+              alt="Windows ME"></div>
+          <figcaption> <span class="loc">Windows ME</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/US%20Army.wmz"
+              target="_blank" rel="noopener" title="U.S. Army — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Windows%20XP_square.png?raw=true"
+              alt="Windows XP"></div>
+          <figcaption> <span class="loc">Windows XP</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Windows%20XP.wmz"
+              target="_blank" rel="noopener" title="Windows XP — Download this visualisation">Download
+              this visualisation</a> <br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Windows%20XP%20MCE_square.png?raw=true"
+              alt="Windows XP Media Centre Edition"></div>
+          <figcaption> <span class="loc">Windows XP Media Center Edition</span>
+            <span class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Windows_XP_Media_Center_Edition.wmz"
+              target="_blank" rel="noopener" title="Windows XP Media Center — Download this visualisation">Download
+              this visualisation</a><br>
+            <span style="color: #154f8f;"></span><a href="https://archive.org/download/windows-media-player-visualisations_202610/Windows_XP_Media_Center_Edition_-_Enhanced_for_XPS9.wmz"
+              target="_blank" rel="noopener" title="Windows XP Media Center (XP Enhanced) — Download this visualisation">Download
+              this visualisation (XP Enhanced)</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/WMP10_square.png?raw=true"
+              alt="Windows Media Player 10"></div>
+          <figcaption> <span class="loc">Windows Media Player 10</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/wmp10_reload.wmz"
+              target="_blank" rel="noopener" title="Windows Media Player 10 — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/WWC_square.png?raw=true"
+              alt="Wild Well Control"></div>
+          <figcaption> <span class="loc">Wild Well Control</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/US%20Navy.wmz"
+              target="_blank" rel="noopener" title="Wild Well Control — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/WoW_square.png?raw=true"
+              alt="World of Warcraft"></div>
+          <figcaption> <span class="loc">World of Warcraft</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/WoW.wmz"
+              target="_blank" rel="noopener" title="World of Warcraft — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/WWN_square.png?raw=true"
+              alt="World Wrestling Network"></div>
+          <figcaption> <span class="loc">World Wrestling Network</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/WWN_mp7.wmz"
+              target="_blank" rel="noopener" title="WWN (MP7) — Download this visualisation">Download
+              this visualisation (MP7)</a><br>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/WWN_xp.wmz"
+              target="_blank" rel="noopener" title="World Wrestling Network (MP8) — Download this visualisation">Download
+              this visualisation (MP8)</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Xbox_square.png?raw=true"
+              alt="Xbox"></div>
+          <figcaption><span class="loc">XBOX</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/XBOX.wmz"
+              target="_blank" rel="noopener" title="XBOX — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Xbox%20Live_square.png?raw=true"
+              alt="XBOX Live Skin"></div>
+          <figcaption><span class="loc">XBOX Live Skin</span><span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Xbox%20Live%20Skin.wmz"
+              target="_blank" rel="noopener" title="XBOX Live Skin — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Xbox%20Music%20Mixer%20%282%29_square.png?raw=true"
+              alt="Xbox Music Maker"></div>
+          <figcaption> <span class="loc">XBOX Music Maker</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/XBOX_Music_Mixer.wmz"
+              target="_blank" rel="noopener" title="Xbox Music Maker — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/XSN%20Sports_square.png?raw=true"
+              alt="XSN Sports"></div>
+          <figcaption> <span class="loc">XSN Sports</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/xsn_sports.wmz"
+              target="_blank" rel="noopener" title="XSN Sports — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/XXX%20%20Night%20Vision_square.png?raw=true"
+              alt="xXx Night Vision Edition"></div>
+          <figcaption> <span class="loc">xXx Night Vision Edition</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Windows%20Classic.wmz"
+              target="_blank" rel="noopener" title="xXx Night Vision Edition — Download this visualisation">Download
+              this visualisation</a> </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/YIL%21OMA2k_square.png?raw=true"
+              alt="YIL Online Music Awards"></div>
+          <figcaption> <span class="loc">YIL Online Music Awards</span> <span
+              class="region">Visualisations</span> <a href="https://archive.org/download/windows-media-player-visualisations_202610/Windows%20XP.wmz"
+              target="_blank" rel="noopener" title="YIL Online Music Awards — Download this visualisation">Download
+              this visualisation</a> <br>
+          </figcaption> </figure>
+        <figure class="card">
+          <div class="photo"> <img src="https://github.com/jguiii/themecentre-windows/blob/main/thumbs/WMPVIZ/Zengarden_square.png?raw=true"
+              alt="Zengarden"></div>
+          <figcaption> <span class="loc">Zengarden</span> <span class="region">Visualisations</span>
+            <a href="https://archive.org/download/windows-media-player-visualisations_202610/Zengarden.wmz"
+              target="_blank" rel="noopener" title="Zengarden — Download this visualisation">Download
+              this visualisation</a> <br>
+          </figcaption> </figure>
+      </div>
+    </div>
+    <footer>The Windows Personalisation Archive is an independent, fan-made
+      archive of official Microsoft content - not affiliated with or endorsed by
+      any operating system vendor, including Microsoft Corporation.</footer>
+  </body>
+</html>
